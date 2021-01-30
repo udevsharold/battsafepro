@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "Reloading powerd..."
+killall -9 powerd || true
+killall -9 symptomsd || true
+
+chown root:wheel /usr/local/bin/bts
+chmod +s /usr/local/bin/bts
+
+exit 0

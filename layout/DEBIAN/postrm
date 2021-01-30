@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo "Reloading powerd..."
+killall -9 powerd || true
+killall -9 symptomsd || true
+
+exit 0

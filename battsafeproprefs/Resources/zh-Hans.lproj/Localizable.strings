@@ -1,0 +1,61 @@
+//translated by xiehq
+
+//=====================Notification=====================
+"NOTI_MESSAGE" = "充电停止，已达到 %d%%";
+"NOTI_CHARGE_NOW" = "继续充电";
+
+
+//=====================Preferences=====================
+"TWEAK" = "插件";
+"TWEAK_FOOTER" = "所有设置修改无需注销。";
+"ENABLED" = "开启";
+"SHOW_NOTIFICATION" = "推送通知";
+"SHOW_NOTIFICATION_FOOTER" = "冲电停止到设置的最高电量后通知我。";
+"NOTIFY_SILENTLY" = "Deliver Quietly";
+"NOTIFY_SILENTLY_FOOTER" = "Notify without waking up the screen.";
+"MAX_CHARGE_LEVEL" = "最高电量";
+"MAX_CHARGE_LEVEL_FOOTER" = "设置最高充电电量 (%)，默认为 80% 。";
+
+"DEVELOPMENT" = "插件开发";
+"SUPPORT" = "支持开发者";
+"CONTACT" = "联系";
+"TWITTER" = "Twitter";
+"REDDIT" = "Reddit";
+"FOOTER_CREATED" = "由 udevs 开发";
+"FOOTER_CREDITS" = "特别感谢\n%@";
+
+"RESPRING" = "注销";
+"RESPRING_MESSAGE" = "无需注销，要继续注销吗？";
+"ANSWER_YES" = "是的";
+"ANSWER_NO" = "算了";
+
+"ONBOARDING_SCREEN_SHOW" = "Show Onboarding Screen";
+"ONBOARDING_ALERT_SHOW" = "Show Onboarding Alert";
+
+"OVERSHOOTING_HEADER" = "Overshooting";
+"OVERSHOOTING_MESSAGE" = "Sometimes you'll notice that the charged percentage overshoot by around 1-2% more than the preferred max charge level and that's perfectly normal. iOS occasionally decides not to update the percentage until the next cycle, especially when the device is in very deep sleep. Moreover, the percentage that shows is just an estimation by iOS itself and is not absolute accurate numerically. However, BattSafePro has already trying its best in intelligently mitigating this.";
+"ANSWER_GOT_IT" = "Got it";
+
+"WELCOME_DESCRIPTION" = "Prolong your battery life";
+
+"OPTIMIZED_CHARGING_HEADER" = "Optimized Charging";
+"OPTIMIZED_CHARGING_MESSAGE" = "It's highly recommended to disable Apple's optimized charging for best experience.";
+
+"ACTIVATOR_SUPPORT_HEADER" = "Activator Support";
+"ACTIVATOR_SUPPORT_MESSAGE" = "Activator is supported by BattSafePro. Get it for more personal customizations.";
+
+//Diagnostic Screen
+"DIAGNOSTIC_SCREEN_SHOW" = "Show Diagnostic Screen";
+"DIAGNOSTIC_ALERT_SHOW" = "Show Diagnostic Alert";
+"DIAGNOSTIC_TITLE" = "Diagnostic Info";
+"DIAGNOSTIC_DESCRIPTION" = "Overview of Current System Status\n\nIf you experiencing any issue, reboot and rejailbreak instead of userspace reboot/ldrestart.";
+
+"DIAGNOSTIC_BATTSAFEPRO_IN_EFFECT" = "BattSafePro in Effect";
+"DIAGNOSTIC_CHARGING" = "Battery Currently Charging";
+"DIAGNOSTIC_CHARGING_DESCRIPTION" = "Status update by system will take handful of seconds, keep refreshing.";
+"DIAGNOSTIC_CHARGING_PROHIBITED" = "Battery Charging Prohibited";
+"DIAGNOSTIC_EXTERNAL" = "External Source Connected";
+"DIAGNOSTIC_EXTERNAL_CAPABLE" = "External Source Capable of Charging";
+
+"DIAGNOSTIC_BUTTON_REFRESH" = "Refresh";
+"DIAGNOSTIC_BUTTON_CLOSE" = "Close";

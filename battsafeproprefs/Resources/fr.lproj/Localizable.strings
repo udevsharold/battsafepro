@@ -1,0 +1,60 @@
+//translated by [Crevette]
+
+//=====================Notification=====================
+"NOTI_MESSAGE" = "Chargement arrêté à %d%%";
+"NOTI_CHARGE_NOW" = "Charger maintenant";
+
+//=====================Preferences=====================
+"TWEAK" = "Tweak";
+"TWEAK_FOOTER" = "Les changements ne nécéssitent pas un respring";
+"ENABLED" = "Activé";
+"SHOW_NOTIFICATION" = "Notification";
+"SHOW_NOTIFICATION_FOOTER" = "Envoyer une notification quand la charge maximale est atteinte.";
+"NOTIFY_SILENTLY" = "Notification silencieuses";
+"NOTIFY_SILENTLY_FOOTER" = "Notifier sans allumer l'écran.";
+"MAX_CHARGE_LEVEL" = "Charge maximale";
+"MAX_CHARGE_LEVEL_FOOTER" = "Définissez le niveau de charge maximale (%). Par défaut : 80%.";
+
+"DEVELOPMENT" = "Développement";
+"SUPPORT" = "Aider le développement";
+"CONTACT" = "Contactes";
+"TWITTER" = "Twitter";
+"REDDIT" = "Reddit";
+"FOOTER_CREATED" = "Créé par udevs";
+"FOOTER_CREDITS" = "Special thanks\n%@";
+
+"RESPRING" = "Respring";
+"RESPRING_MESSAGE" = "Le respring n'est pas nécéssaire, respringer quand même ?";
+"ANSWER_YES" = "Oui";
+"ANSWER_NO" = "Non";
+
+"ONBOARDING_SCREEN_SHOW" = "Montrer l'écran de présentation";
+"ONBOARDING_ALERT_SHOW" = "Montrer les alertes d'intégration";
+
+"OVERSHOOTING_HEADER" = "Surcharge";
+"OVERSHOOTING_MESSAGE" = "Vous pouvez remarquer que le pourcentage de la charge peut augmenter de 1 ou 2% de plus par rapport à la charge maximale définie, c'est tout à fait normale. iOS peut parfois décider de ne pas actualiser le pourcentage jusqu'au prochain cycle de charge, surtout quand l'appareil et en veille prolongé. Le pourcentage montré n'est qu'une estimation d'iOS et l'estimation n'est pas parfaite à 100%. Cependant, BattSafePro essaye déjà d'atténuer du meilleur qu'il peut sa propre estimation pour éviter de fausser les chiffres. ";
+"ANSWER_GOT_IT" = "Compris !";
+
+"WELCOME_DESCRIPTION" = "Prolongez la vie de votre batterie";
+
+"OPTIMIZED_CHARGING_HEADER" = "Charge optimisé";
+"OPTIMIZED_CHARGING_MESSAGE" = "Il est grandement recommandé de désactivé la fonctionnalité de base d'Apple pour une meilleur expérience.";
+
+"ACTIVATOR_SUPPORT_HEADER" = "Support d'Activator";
+"ACTIVATOR_SUPPORT_MESSAGE" = "Activator est supporté par BattSafePro. Utilisez-le pour une meilleur expérience et pour plus de customisation.";
+
+//Diagnostic Screen
+"DIAGNOSTIC_SCREEN_SHOW" = "Montrer l'écran de diagnostiques";
+"DIAGNOSTIC_ALERT_SHOW" = "Montrer les alertes de diagnostiques";
+"DIAGNOSTIC_TITLE" = "Informations de diagnostiques";
+"DIAGNOSTIC_DESCRIPTION" = "Aperçu du statut actuel du système. Si vous rencontrez un problème/une erreur, redémarrez et rejailbreakez votre iDevice au lieu de faire un LDrestart (un redémarrage sans perte de jailbreak)";
+
+"DIAGNOSTIC_BATTSAFEPRO_IN_EFFECT" = "Etat de BattSafePro";
+"DIAGNOSTIC_CHARGING" = "Batterie en charge";
+"DIAGNOSTIC_CHARGING_DESCRIPTION" = "Le rafraichissement de ce statut par le système peut prendre quelque secondes, vous pouvez rafraichir manuellement (si la batterie à atteint la charge maximale, ce statut sera désactivé).";
+"DIAGNOSTIC_CHARGING_PROHIBITED" = "Charge de la batterie terminé";
+"DIAGNOSTIC_EXTERNAL" = "Source extèrne connecté";
+"DIAGNOSTIC_EXTERNAL_CAPABLE" = "Source externe disponible pour le chargement";
+
+"DIAGNOSTIC_BUTTON_REFRESH" = "Rafraichir";
+"DIAGNOSTIC_BUTTON_CLOSE" = "Fermer";

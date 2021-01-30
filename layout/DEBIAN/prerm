@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo "Restoring charging state..."
+/usr/local/bin/bts -r
+
+exit 0

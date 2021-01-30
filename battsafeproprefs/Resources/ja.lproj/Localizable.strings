@@ -1,0 +1,61 @@
+//translated by himajin
+
+//=====================Notification=====================
+"NOTI_MESSAGE" = "%d%%で充電を停止しました";
+"NOTI_CHARGE_NOW" = "充電を再開";
+
+
+//=====================Preferences=====================
+"TWEAK" = "Tweak";
+"TWEAK_FOOTER" = "リスプリング無しで設定が適用されます";
+"ENABLED" = "有効";
+"SHOW_NOTIFICATION" = "通知する";
+"SHOW_NOTIFICATION_FOOTER" = "設定した充電量になると通知されます";
+"NOTIFY_SILENTLY" = "通知バナーの表示なし";
+"NOTIFY_SILENTLY_FOOTER" = "通知センターのみに表示します";
+"MAX_CHARGE_LEVEL" = "停止する充電量を設定";
+"MAX_CHARGE_LEVEL_FOOTER" = "停止する充電量(%)を設定　デフォルトでは80%です";
+
+"DEVELOPMENT" = "DEVELOPMENT";
+"SUPPORT" = "開発者を支援する";
+"CONTACT" = "お問い合わせ";
+"TWITTER" = "Twitter";
+"REDDIT" = "Reddit";
+"FOOTER_CREATED" = "Created by udevs";
+"FOOTER_CREDITS" = "Special thanks\n%@";
+
+"RESPRING" = "Respring";
+"RESPRING_MESSAGE" = "リスプリングは必要ではありませんが、続けますか？";
+"ANSWER_YES" = "はい";
+"ANSWER_NO" = "いいえ";
+
+"ONBOARDING_SCREEN_SHOW" = "説明画面を表示";
+"ONBOARDING_ALERT_SHOW" = "説明画面を表示";
+
+"OVERSHOOTING_HEADER" = "誤差について";
+"OVERSHOOTING_MESSAGE" = "iOSはデバイスがスリープ状態にある場合、一定時間充電残量を更新しないことがあります。さらに、表示される充電残量はおおよその数値であり、正確なものではありません。しかし、BattSafeProはこれをできる限り緩和するために最善を尽くしています。";
+"ANSWER_GOT_IT" = "閉じる";
+
+"WELCOME_DESCRIPTION" = "バッテリーの寿命を延ばします";
+
+"OPTIMIZED_CHARGING_HEADER" = "最適化されたバッテリー充電";
+"OPTIMIZED_CHARGING_MESSAGE" = "最適化されたバッテリー充電を無効にすることを強くおすすめします。";
+
+"ACTIVATOR_SUPPORT_HEADER" = "Activatorをサーポート";
+"ACTIVATOR_SUPPORT_MESSAGE" = "BattSafeProはActivatorをサポートしているので、さらに便利にカスタマイズすることができます。";
+
+//Diagnostic Screen
+"DIAGNOSTIC_SCREEN_SHOW" = "診断画面を表示";
+"DIAGNOSTIC_ALERT_SHOW" = "診断画面を表示";
+"DIAGNOSTIC_TITLE" = "診断情報";
+"DIAGNOSTIC_DESCRIPTION" = "現在のシステム状況\n\n何か問題が発生した場合は、userspace reboot/ldrestartではなく、再起動して再脱獄をしてください。";
+
+"DIAGNOSTIC_BATTSAFEPRO_IN_EFFECT" = "BattSafeProが稼働中";
+"DIAGNOSTIC_CHARGING" = "バッテリー充電中";
+"DIAGNOSTIC_CHARGING_DESCRIPTION" = "ステータスの更新には数秒かかります。更新を続けてください。";
+"DIAGNOSTIC_CHARGING_PROHIBITED" = "充電停止中";
+"DIAGNOSTIC_EXTERNAL" = "電源に接続";
+"DIAGNOSTIC_EXTERNAL_CAPABLE" = "充電可能な電源に接続";
+
+"DIAGNOSTIC_BUTTON_REFRESH" = "更新";
+"DIAGNOSTIC_BUTTON_CLOSE" = "閉じる";

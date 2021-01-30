@@ -1,0 +1,61 @@
+//translated by u/vladaad
+
+//=====================Notification=====================
+"NOTI_MESSAGE" = "Zařízení se přestalo nabíjet po dosáhnutí %d%%";
+"NOTI_CHARGE_NOW" = "Nabijte teď";
+
+
+//=====================Preferences=====================
+"TWEAK" = "Tweak";
+"TWEAK_FOOTER" = "Není nutný respring pro všechny změny nastavení";
+"ENABLED" = "Zapnuto";
+"SHOW_NOTIFICATION" = "Oznámení";
+"SHOW_NOTIFICATION_FOOTER" = "Oznámit při dosáhnutí maximální úrovně nabití";
+"NOTIFY_SILENTLY" = "Doručovat potichu";
+"NOTIFY_SILENTLY_FOOTER" = "Oznámit bez zapnutí obrazovky";
+"MAX_CHARGE_LEVEL" = "Maximální úrověň nabití";
+"MAX_CHARGE_LEVEL_FOOTER" = "Nastavit maximální úroveň nabití v procentech. Výchozí je 80%.";
+
+"DEVELOPMENT" = "Vývoj";
+"SUPPORT" = "Podpořit vývoj";
+"CONTACT" = "Kontakty";
+"TWITTER" = "Twitter";
+"REDDIT" = "Reddit";
+"FOOTER_CREATED" = "Vytvořil udevs";
+"FOOTER_CREDITS" = "Zvláštní poděkování\n%@";
+
+"RESPRING" = "Respring";
+"RESPRING_MESSAGE" = "Respring není nutný, opravdu respringout?";
+"ANSWER_YES" = "Ano";
+"ANSWER_NO" = "Ne";
+
+"ONBOARDING_SCREEN_SHOW" = "Ukázat vítací obrazovku";
+"ONBOARDING_ALERT_SHOW" = "Ukázat vítací upozornění";
+
+"OVERSHOOTING_HEADER" = "Přestřelování";
+"OVERSHOOTING_MESSAGE" = "Občas si všimnete toho, že se baterie nabije o 1% až 2% více než nastavená maximální úrověň nabití, a to je normální. iOS se občas rozhodne neaktualizovat nabití baterie v jednom cyklu, obzvlášť když zařízení je ve stavu hlubokého spánku. Ještě k tomu je nabití baterie které iOS ukazuje pouze odhad a není úplně numericky přesné. BattSafePro se co nejvíce snaží inteligentně tot obejít.";
+"ANSWER_GOT_IT" = "Chápu to";
+
+"WELCOME_DESCRIPTION" = "Zlepšete výdrž baterie";
+
+"OPTIMIZED_CHARGING_HEADER" = "Optimalizované nabíjení";
+"OPTIMIZED_CHARGING_MESSAGE" = "Pro nejlepší zkušenost je nejlepší vypnout Optimalizované Nabíjení v nastavení.";
+
+"ACTIVATOR_SUPPORT_HEADER" = "Podpora Activatoru";
+"ACTIVATOR_SUPPORT_MESSAGE" = "BattSafePro podporuje Activator. Stáhněte si ho pro více možností přizpůsobení.";
+
+//Diagnostic Screen
+"DIAGNOSTIC_SCREEN_SHOW" = "Ukázat diagnostickou obrazovku";
+"DIAGNOSTIC_ALERT_SHOW" = "Ukázat diagnostické upozornění";
+"DIAGNOSTIC_TITLE" = "Diagnostika";
+"DIAGNOSTIC_DESCRIPTION" = "Přehled stavu systému\n\nPokud máte problémy, restartujte a znovu jailbreakněte místo userspace rebootu/ldrestartu.";
+
+"DIAGNOSTIC_BATTSAFEPRO_IN_EFFECT" = "Stav BattSafuPro";
+"DIAGNOSTIC_CHARGING" = "Stav nabíjení baterie";
+"DIAGNOSTIC_CHARGING_DESCRIPTION" = "Aktualizace stavu bude trvat chvíli, pořád obnovujte";
+"DIAGNOSTIC_CHARGING_PROHIBITED" = "Stav zákazu nabíjení baterie";
+"DIAGNOSTIC_EXTERNAL" = "Externí zdroj připojen";
+"DIAGNOSTIC_EXTERNAL_CAPABLE" = "Schopnost externího zdroje nabíjet";
+
+"DIAGNOSTIC_BUTTON_REFRESH" = "Obnovit";
+"DIAGNOSTIC_BUTTON_CLOSE" = "Zavřít";
