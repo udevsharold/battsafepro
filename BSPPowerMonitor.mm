@@ -4,16 +4,17 @@
 #import "BattSafe-Private.h"
 #import "SpringBoard-Private.h"
 #import "Tweak+Debug.h"
+#include <objc/runtime.h>
 
 static NSBundle *tweakBundle;
 
 static void bypassStateCallBack(){
-     BSPPowerMonitor *monitor = [%c(BSPPowerMonitor) sharedInstance];
+     BSPPowerMonitor *monitor = [objc_getClass("BSPPowerMonitor") sharedInstance];
     [monitor bypassState];
 }
 
 static void prermingCallback(){
-     BSPPowerMonitor *monitor = [%c(BSPPowerMonitor) sharedInstance];
+     BSPPowerMonitor *monitor = [objc_getClass("BSPPowerMonitor") sharedInstance];
     [monitor prerming];
 }
 
@@ -32,7 +33,7 @@ static void prermingCallback(){
     if ((self = [super init])){
 
         [self createPowerdXPCConnection];
-        self.prefsManagerClient = [[%c(BSPPrefsManagerClient) alloc] initWithIdentifier:TWEAK_IDENTIFIER];
+        self.prefsManagerClient = [[objc_getClass("BSPPrefsManagerClient") alloc] initWithIdentifier:TWEAK_IDENTIFIER];
         [self reloadPrefs];
         tweakBundle = [NSBundle bundleWithPath:bundlePath];
         [tweakBundle load];
@@ -59,7 +60,7 @@ static void prermingCallback(){
 
 -(void)wakeAndExecute:(dispatch_block_t)block delay:(double)delay{
     HBL(@"Waking up and executing in %f seconds", delay);
-    PCPersistentTimer *timer = [[%c(PCPersistentTimer) alloc] initWithFireDate:[[NSDate date] dateByAddingTimeInterval:delay] serviceIdentifier:TWEAK_IDENTIFIER target:self selector:@selector(execute:) userInfo:block?@{@"block":block}:nil];
+    PCPersistentTimer *timer = [[objc_getClass("PCPersistentTimer") alloc] initWithFireDate:[[NSDate date] dateByAddingTimeInterval:delay] serviceIdentifier:TWEAK_IDENTIFIER target:self selector:@selector(execute:) userInfo:block?@{@"block":block}:nil];
     [timer setMinimumEarlyFireProportion:1];
     if ([NSThread isMainThread]) {
         [timer scheduleInRunLoop:[NSRunLoop mainRunLoop]];

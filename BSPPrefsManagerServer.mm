@@ -1,5 +1,6 @@
 #import "common.h"
 #import "BSPPrefsManagerServer.h"
+#include <objc/runtime.h>
 
 @implementation BSPPrefsManagerServer
 
@@ -16,7 +17,7 @@
 
 - (instancetype)init{
     if ((self = [super init])) {
-        _messagingCenter = [%c(CPDistributedMessagingCenter) centerNamed:BSPPREFSMANAGER_CENTER_IDENTIFIER];
+        _messagingCenter = [objc_getClass("CPDistributedMessagingCenter") centerNamed:BSPPREFSMANAGER_CENTER_IDENTIFIER];
         rocketbootstrap_distributedmessagingcenter_apply(_messagingCenter);
         [_messagingCenter runServerOnCurrentThread];
         [_messagingCenter registerForMessageName:@"readPrefs" target:self selector:@selector(readPrefs:withUserInfo:)];

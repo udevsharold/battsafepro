@@ -5,6 +5,7 @@
 #import "BattSafe-Private.h"
 #import "SpringBoard-Private.h"
 #import "Tweak+Debug.h"
+#include <objc/runtime.h>
 
 static NSBundle *tweakBundle;
 
@@ -26,7 +27,7 @@ static NSBundle *tweakBundle;
         tweakBundle = [NSBundle bundleWithPath:bundlePath];
         [tweakBundle load];
         
-        _ndMessagingCenter = [%c(CPDistributedMessagingCenter) centerNamed:NOTIFICATIONDISPATCHER_CENTER_IDENTIFIER];
+        _ndMessagingCenter = [objc_getClass("CPDistributedMessagingCenter") centerNamed:NOTIFICATIONDISPATCHER_CENTER_IDENTIFIER];
         rocketbootstrap_distributedmessagingcenter_apply(_ndMessagingCenter);
         [_ndMessagingCenter runServerOnCurrentThread];
         [_ndMessagingCenter registerForMessageName:@"recallRequest" target:self selector:@selector(recallRequest:withUserInfo:)];
@@ -44,7 +45,7 @@ static NSBundle *tweakBundle;
 
 -(void)dismissNotification{
     [notificationListViewController dismissModalFullScreenAnimated:YES];
-      [[%c(SBBannerController) sharedInstance] dismissBannerWithAnimation:YES reason:0 forceEvenIfBusy:YES];
+      [[objc_getClass("SBBannerController") sharedInstance] dismissBannerWithAnimation:YES reason:0 forceEvenIfBusy:YES];
       [self recallRequest];
 }
 
@@ -65,12 +66,12 @@ static NSBundle *tweakBundle;
 }
 
 -(NCNotificationRequest *)requestAtLevel:(int)level{
-    BBBulletinRequest* bulletin = [%c(BBBulletinRequest) new];
+    BBBulletinRequest* bulletin = [objc_getClass("BBBulletinRequest") new];
     
     bulletin.header = @"BattSafePro";
     bulletin.message = LOCALIZEDF(@"NOTI_MESSAGE", level);
     
-    bulletin.accessoryImage = (BBImage *)[%c(BBImage) imageWithName:@"BattSafeProBulletin" inBundle:[NSBundle bundleWithPath:@"/Library/PreferenceBundles/BattSafeProPrefs.bundle"]];
+    bulletin.accessoryImage = (BBImage *)[objc_getClass("BBImage") imageWithName:@"BattSafeProBulletin" inBundle:[NSBundle bundleWithPath:@"/Library/PreferenceBundles/BattSafeProPrefs.bundle"]];
     
     bulletin.section = @"com.udevs.battsafepro";
     bulletin.sectionID = @"com.udevs.battsafepro";
@@ -86,18 +87,18 @@ static NSBundle *tweakBundle;
     bulletin.preventAutomaticRemovalFromLockScreen = YES;
     bulletin.lockScreenPriority = 302;
     bulletin.turnsOnDisplay = !self.notifySilently;
-    //BBSectionIcon *icon = [%c(BBSectionIcon) new];
-    //BBSectionIconVariant *variant = [%c(BBSectionIconVariant) variantWithFormat:0 imageName:@"BattSafeProBulletin" inBundle:[NSBundle bundleWithPath:@"/Library/PreferenceBundles/BattSafeProPrefs.bundle"]];
+    //BBSectionIcon *icon = [objc_getClass("BBSectionIcon") new];
+    //BBSectionIconVariant *variant = [objc_getClass("BBSectionIconVariant") variantWithFormat:0 imageName:@"BattSafeProBulletin" inBundle:[NSBundle bundleWithPath:@"/Library/PreferenceBundles/BattSafeProPrefs.bundle"]];
     //icon.variants = [NSSet setWithArray:@[variant]];
     //bulletin.icon = icon;
     
-    //BBObserver *observer = [[[%c(NCBulletinNotificationSource) alloc] initWithDispatcher:((SpringBoard *)[%c(UIApplication) sharedApplication]).notificationDispatcher.dispatcher] valueForKey:@"_observer"];
+    //BBObserver *observer = [[[objc_getClass("NCBulletinNotificationSource") alloc] initWithDispatcher:((SpringBoard *)[objc_getClass("UIApplication") sharedApplication]).notificationDispatcher.dispatcher] valueForKey:@"_observer"];
     
-    BBSectionInfo *sectionInfo = [%c(BBSectionInfo) new];
+    BBSectionInfo *sectionInfo = [objc_getClass("BBSectionInfo") new];
     sectionInfo.sectionID = @"com.udevs.battsafepro";
     sectionInfo.allowsNotifications = YES;
     
-    BBAction *chargeNowBBAction = [%c(BBAction) actionWithLaunchURL:nil callblock:^{
+    BBAction *chargeNowBBAction = [objc_getClass("BBAction") actionWithLaunchURL:nil callblock:^{
         //HBL(@"callblokc");
     }];
     chargeNowBBAction.identifier = @"CHARGE_NOW";
@@ -107,11 +108,11 @@ static NSBundle *tweakBundle;
     //bulletin.defaultAction = chargeNowBBAction;
 
     //other feed will not dismiss banner automatically
-    NCMutableNotificationRequest *request = [[%c(NCNotificationRequest) notificationRequestForBulletin:bulletin observer:self sectionInfo:sectionInfo feed:2] mutableCopy];
-    //request.defaultAction = [%c(NCNotificationAction) notificationActionForAction:chargeNowBBAction bulletin:bulletin observer:self];
+    NCMutableNotificationRequest *request = [[objc_getClass("NCNotificationRequest") notificationRequestForBulletin:bulletin observer:self sectionInfo:sectionInfo feed:2] mutableCopy];
+    //request.defaultAction = [objc_getClass("NCNotificationAction") notificationActionForAction:chargeNowBBAction bulletin:bulletin observer:self];
     
-    NCMutableNotificationAction *chargeNowAction = [%c(NCMutableNotificationAction) new];
-    NCBulletinActionRunner <NCNotificationActionRunner> *chargeNowActionRunner = [[%c(NCBulletinActionRunner) alloc] initWithAction:chargeNowBBAction bulletin:bulletin observer:self];
+    NCMutableNotificationAction *chargeNowAction = [objc_getClass("NCMutableNotificationAction") new];
+    NCBulletinActionRunner <NCNotificationActionRunner> *chargeNowActionRunner = [[objc_getClass("NCBulletinActionRunner") alloc] initWithAction:chargeNowBBAction bulletin:bulletin observer:self];
 
     chargeNowAction.shouldDismissNotification = YES;
     chargeNowAction.title = @"Charge Now";
@@ -123,7 +124,7 @@ static NSBundle *tweakBundle;
     
     request.requestDestinations = [NSSet setWithArray:@[@"BulletinDestinationCoverSheet", @"BulletinDestinationBanner", @"BulletinDestinationNotificationCenter", @"BulletinDestinationLockScreen"]];
     
-    NCMutableNotificationOptions *options = [%c(NCMutableNotificationOptions) new];
+    NCMutableNotificationOptions *options = [objc_getClass("NCMutableNotificationOptions") new];
     options.addToLockScreenWhenUnlocked = YES;
     options.alertsWhenLocked = YES;
     options.lockScreenPersistence = 2;
@@ -148,7 +149,7 @@ static NSBundle *tweakBundle;
     for (NCNotificationStructuredSectionList *section in sections){
         for (NCNotificationRequest *request in section.allNotificationRequests){
             if ([request.sectionIdentifier containsString:@"com.udevs.battsafepro"]){
-                SBNCNotificationDispatcher *sbNotificationDispatcher = ((SpringBoard *)[%c(UIApplication) sharedApplication]).notificationDispatcher;
+                SBNCNotificationDispatcher *sbNotificationDispatcher = ((SpringBoard *)[objc_getClass("UIApplication") sharedApplication]).notificationDispatcher;
                 [sbNotificationDispatcher.dispatcher destination:nil requestsClearingNotificationRequests:@[request]];
                 [notificationListViewController removeNotificationRequest:request];
                 HBL(@"Recallled request");
@@ -171,14 +172,14 @@ static NSBundle *tweakBundle;
     //dispatch_async(BBServerQ, ^{
         //[bulletinServer publishBulletinRequest:req destinations:14];
     //});
-    SBNCNotificationDispatcher *sbNotificationDispatcher = ((SpringBoard *)[%c(UIApplication) sharedApplication]).notificationDispatcher;
+    SBNCNotificationDispatcher *sbNotificationDispatcher = ((SpringBoard *)[objc_getClass("UIApplication") sharedApplication]).notificationDispatcher;
     [sbNotificationDispatcher.dispatcher postNotificationWithRequest:req];
     return YES;
 }
 
 -(void)reloadPrefs{
     //if (!self.firstInit){ //To fix reload prefs twice during respring
-        BSPPrefsManagerServer *prefsManager = [%c(BSPPrefsManagerServer) sharedInstance];
+        BSPPrefsManagerServer *prefsManager = [objc_getClass("BSPPrefsManagerServer") sharedInstance];
         self.enabled = [prefsManager valueForKey:@"enabled" identifier:TWEAK_IDENTIFIER] ? [[prefsManager valueForKey:@"enabled" identifier:TWEAK_IDENTIFIER] boolValue] : YES;
         self.notifySilently = [prefsManager valueForKey:@"notifySilently"  identifier:TWEAK_IDENTIFIER] ? [[prefsManager valueForKey:@"notifySilently" identifier:TWEAK_IDENTIFIER] boolValue] : YES;
     //}
