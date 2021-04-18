@@ -13,6 +13,8 @@
 "SHOW_NOTIFICATION_FOOTER" = "設定した充電量になると通知されます";
 "NOTIFY_SILENTLY" = "通知バナーの表示なし";
 "NOTIFY_SILENTLY_FOOTER" = "通知センターのみに表示します";
+"NOTIFY_WITH_TONE" = "Alert Tone";
+"NOTIFY_WITH_TONE_FOOTER" = "Notify with alert tone.";
 "MAX_CHARGE_LEVEL" = "停止する充電量を設定";
 "MAX_CHARGE_LEVEL_FOOTER" = "停止する充電量(%)を設定　デフォルトでは80%です";
 

@@ -92,6 +92,7 @@ static NSBundle *tweakBundle;
     bulletin.preventAutomaticRemovalFromLockScreen = YES;
     bulletin.lockScreenPriority = 302;
     bulletin.turnsOnDisplay = !self.notifySilently;
+   
     //BBSectionIcon *icon = [objc_getClass("BBSectionIcon") new];
     //BBSectionIconVariant *variant = [objc_getClass("BBSectionIconVariant") variantWithFormat:0 imageName:@"BattSafeProBulletin" inBundle:[NSBundle bundleWithPath:@"/Library/PreferenceBundles/BattSafeProPrefs.bundle"]];
     //icon.variants = [NSSet setWithArray:@[variant]];
@@ -139,6 +140,17 @@ static NSBundle *tweakBundle;
     options.dismissAutomatically = YES;
     options.dismissAutomaticallyForCarPlay = YES;
     
+    if (!self.notifySilently && self.notifyWithTone){
+        NSString *soundFilePath = @"/System/Library/Audio/UISounds/nano/Alert_PassbookBalance_Haptic.caf";
+        if ([[NSFileManager defaultManager] fileExistsAtPath:soundFilePath]){
+            TLAlertConfiguration *tlAlertConfig = [[objc_getClass("TLAlertConfiguration") alloc] initWithType:2];
+            tlAlertConfig.externalToneFileURL = [NSURL URLWithString:soundFilePath];
+            NCMutableNotificationSound *notiSound = [[objc_getClass("NCMutableNotificationSound") alloc] init];
+            notiSound.alertConfiguration =tlAlertConfig;
+            request.sound = notiSound;
+            options.canPlaySound = YES;
+        }
+    }
     request.options = options;
     
     return request;
@@ -184,9 +196,10 @@ static NSBundle *tweakBundle;
 
 -(void)reloadPrefs{
     //if (!self.firstInit){ //To fix reload prefs twice during respring
-        BSPPrefsManagerServer *prefsManager = [objc_getClass("BSPPrefsManagerServer") sharedInstance];
-        self.enabled = [prefsManager valueForKey:@"enabled" identifier:TWEAK_IDENTIFIER] ? [[prefsManager valueForKey:@"enabled" identifier:TWEAK_IDENTIFIER] boolValue] : YES;
-        self.notifySilently = [prefsManager valueForKey:@"notifySilently"  identifier:TWEAK_IDENTIFIER] ? [[prefsManager valueForKey:@"notifySilently" identifier:TWEAK_IDENTIFIER] boolValue] : YES;
+    BSPPrefsManagerServer *prefsManager = [objc_getClass("BSPPrefsManagerServer") sharedInstance];
+    self.enabled = [prefsManager valueForKey:@"enabled" identifier:TWEAK_IDENTIFIER] ? [[prefsManager valueForKey:@"enabled" identifier:TWEAK_IDENTIFIER] boolValue] : YES;
+    self.notifySilently = [prefsManager valueForKey:@"notifySilently"  identifier:TWEAK_IDENTIFIER] ? [[prefsManager valueForKey:@"notifySilently" identifier:TWEAK_IDENTIFIER] boolValue] : YES;
+    self.notifyWithTone = [prefsManager valueForKey:@"notifyWithTone"  identifier:TWEAK_IDENTIFIER] ? [[prefsManager valueForKey:@"notifyWithTone" identifier:TWEAK_IDENTIFIER] boolValue] : NO;
     //}
     HBL(@"notifySilently: %d", self.notifySilently?1:0);
 }

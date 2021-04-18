@@ -135,6 +135,7 @@ void reloadAllSpecifiers() {
         [showNotificationSpec setProperty:@YES forKey:@"default"];
         [showNotificationSpec setProperty:TWEAK_IDENTIFIER forKey:@"defaults"];
         [showNotificationSpec setProperty:PREFS_CHANGED_NOTIFICATION_NAME forKey:@"PostNotification"];
+        self.showNotificationSpecifier = showNotificationSpec;
         [rootSpecifiers addObject:showNotificationSpec];
         
         
@@ -151,6 +152,20 @@ void reloadAllSpecifiers() {
         [notifySilentlySpec setProperty:PREFS_CHANGED_NOTIFICATION_NAME forKey:@"PostNotification"];
         self.notifySilentlySpecifier = notifySilentlySpec;
         [rootSpecifiers addObject:notifySilentlySpec];
+        
+        //Tone
+        PSSpecifier *notifyWithToneGroupSpec = [PSSpecifier preferenceSpecifierNamed:@"" target:self set:nil get:nil detail:nil cell:PSGroupCell edit:nil];
+        [notifyWithToneGroupSpec setProperty:LOCALIZED(@"NOTIFY_WITH_TONE_FOOTER") forKey:@"footerText"];
+        [rootSpecifiers addObject:notifyWithToneGroupSpec];
+        
+        PSSpecifier *notifyWithToneSpec = [PSSpecifier preferenceSpecifierNamed:LOCALIZED(@"NOTIFY_WITH_TONE") target:self set:@selector(setPreferenceValue:specifier:) get:@selector(readPreferenceValue:) detail:nil cell:PSSwitchCell edit:nil];
+        [notifyWithToneSpec setProperty:LOCALIZED(@"NOTIFY_WITH_TONE") forKey:@"label"];
+        [notifyWithToneSpec setProperty:@"notifyWithTone" forKey:@"key"];
+        [notifyWithToneSpec setProperty:@NO forKey:@"default"];
+        [notifyWithToneSpec setProperty:TWEAK_IDENTIFIER forKey:@"defaults"];
+        [notifyWithToneSpec setProperty:PREFS_CHANGED_NOTIFICATION_NAME forKey:@"PostNotification"];
+        self.notifyWithToneSpecifier = notifyWithToneSpec;
+        [rootSpecifiers addObject:notifyWithToneSpec];
         
         
         //max charging level
@@ -257,6 +272,17 @@ void reloadAllSpecifiers() {
     if ([specifier.properties[@"key"] isEqualToString:@"showNotification"]){
         [self.notifySilentlySpecifier setProperty:value forKey:@"enabled"];
         [self reloadSpecifier:self.notifySilentlySpecifier animated:YES];
+        [self.notifyWithToneSpecifier setProperty:value forKey:@"enabled"];
+        if ([self.notifySilentlySpecifier.properties[@"value"] boolValue]){
+            [self.notifyWithToneSpecifier setProperty:@NO forKey:@"enabled"];
+        }
+        [self reloadSpecifier:self.notifyWithToneSpecifier animated:YES];
+    }else if ([specifier.properties[@"key"] isEqualToString:@"notifySilently"]){
+        [self.notifyWithToneSpecifier setProperty:@(![value boolValue]) forKey:@"enabled"];
+        if (![self.showNotificationSpecifier.properties[@"value"] boolValue]){
+            [self.notifyWithToneSpecifier setProperty:@NO forKey:@"enabled"];
+        }
+        [self reloadSpecifier:self.notifyWithToneSpecifier animated:YES];
     }
     return value;
 }
@@ -268,6 +294,17 @@ void reloadAllSpecifiers() {
     }else if ([specifier.properties[@"key"] isEqualToString:@"showNotification"]){
         [self.notifySilentlySpecifier setProperty:value forKey:@"enabled"];
         [self reloadSpecifier:self.notifySilentlySpecifier animated:YES];
+        [self.notifyWithToneSpecifier setProperty:value forKey:@"enabled"];
+        if ([self.notifySilentlySpecifier.properties[@"value"] boolValue]){
+            [self.notifyWithToneSpecifier setProperty:@NO forKey:@"enabled"];
+        }
+        [self reloadSpecifier:self.notifyWithToneSpecifier animated:YES];
+    }else if ([specifier.properties[@"key"] isEqualToString:@"notifySilently"]){
+        [self.notifyWithToneSpecifier setProperty:@(![value boolValue]) forKey:@"enabled"];
+        if (![self.showNotificationSpecifier.properties[@"value"] boolValue]){
+            [self.notifyWithToneSpecifier setProperty:@NO forKey:@"enabled"];
+        }
+        [self reloadSpecifier:self.notifyWithToneSpecifier animated:YES];
     }
 }
 

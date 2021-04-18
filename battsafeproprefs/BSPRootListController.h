@@ -40,5 +40,7 @@
 
 @interface BSPRootListController : PSListController
 @property(nonatomic, retain) UIBarButtonItem *respringBtn;
+@property (nonatomic,retain) PSSpecifier *showNotificationSpecifier;
 @property (nonatomic,retain) PSSpecifier *notifySilentlySpecifier;
+@property (nonatomic,retain) PSSpecifier *notifyWithToneSpecifier;
 @end

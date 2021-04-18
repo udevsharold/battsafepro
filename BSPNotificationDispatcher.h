@@ -6,6 +6,7 @@
     CPDistributedMessagingCenter * _ndMessagingCenter;
 }
 @property(nonatomic, assign) BOOL notifySilently;
+@property(nonatomic, assign) BOOL notifyWithTone;
 @property(nonatomic, assign) BOOL enabled;
 @property(nonatomic, assign) BOOL firstInit;
 +(id)sharedInstance;

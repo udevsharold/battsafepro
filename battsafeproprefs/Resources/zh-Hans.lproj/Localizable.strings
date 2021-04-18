@@ -13,6 +13,8 @@
 "SHOW_NOTIFICATION_FOOTER" = "冲电停止到设置的最高电量后通知我。";
 "NOTIFY_SILENTLY" = "Deliver Quietly";
 "NOTIFY_SILENTLY_FOOTER" = "Notify without waking up the screen.";
+"NOTIFY_WITH_TONE" = "Alert Tone";
+"NOTIFY_WITH_TONE_FOOTER" = "Notify with alert tone.";
 "MAX_CHARGE_LEVEL" = "最高电量";
 "MAX_CHARGE_LEVEL_FOOTER" = "设置最高充电电量 (%)，默认为 80% 。";
 

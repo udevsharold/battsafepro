@@ -13,6 +13,8 @@
 "SHOW_NOTIFICATION_FOOTER" = "Notify when max charge level is reached.";
 "NOTIFY_SILENTLY" = "Deliver Quietly";
 "NOTIFY_SILENTLY_FOOTER" = "Notify without waking up the screen.";
+"NOTIFY_WITH_TONE" = "Alert Tone";
+"NOTIFY_WITH_TONE_FOOTER" = "Notify with alert tone.";
 "MAX_CHARGE_LEVEL" = "Max Charge Level";
 "MAX_CHARGE_LEVEL_FOOTER" = "Set maximum charging level (%). Default is 80%.";
 

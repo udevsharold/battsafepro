@@ -751,7 +751,6 @@
 @property (assign,nonatomic) long long lockScreenPriority;
 @property (nonatomic,retain) BBImage *accessoryImage;
 @property (nonatomic,copy) NSString * bulletinVersionID;
-
 @end
 
 @interface BBSound : NSObject
@@ -888,8 +887,26 @@
 -(id)initWithDispatcher:(id)arg1 ;
 @end
 
-
 @interface TLAlertConfiguration : NSObject
+@property (nonatomic,readonly) BOOL _hasCustomAudioVolume;
+@property (assign,setter=_setAudioPlaybackInitiationDelay:,nonatomic) double _audioPlaybackInitiationDelay;
+@property (assign,setter=_setAudioVolumeRampingDuration:,nonatomic) double _audioVolumeRampingDuration;
+@property (nonatomic,readonly) long long type;
+@property (nonatomic,copy) NSString * topic;
+@property (nonatomic,copy) NSString * toneIdentifier;
+@property (nonatomic,copy) NSString * vibrationIdentifier;
+@property (nonatomic,copy) NSURL * externalToneFileURL;
+@property (assign,nonatomic) unsigned long long externalToneMediaLibraryItemIdentifier;
+@property (nonatomic,copy) NSDictionary * externalVibrationPattern;
+@property (nonatomic,copy) NSURL * externalVibrationPatternFileURL;
+@property (nonatomic,copy) NSString * audioCategory;
+@property (assign,nonatomic) float audioVolume;
+@property (assign,getter=isForPreview,nonatomic) BOOL forPreview;
+@property (assign,nonatomic) double maximumDuration;
+@property (assign,nonatomic) BOOL shouldRepeat;
+@property (assign,nonatomic) BOOL shouldIgnoreRingerSwitch;
+@property (assign,nonatomic) BOOL shouldForcePlayingAtUserSelectedAudioVolume;
+-(id)initWithType:(long long)arg1 ;
 @end
 
 @interface UNNotificationIcon : NSObject
@@ -926,6 +943,7 @@
 @property (assign,nonatomic) BOOL overridesPocketMode;
 @property (assign,nonatomic) BOOL dismissAutomatically;
 @property (assign,nonatomic) BOOL dismissAutomaticallyForCarPlay;
+@property (assign,nonatomic) BOOL canPlaySound;
 @end
 
 @interface NCNotificationContent : NSObject

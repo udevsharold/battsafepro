@@ -43,3 +43,5 @@
 "TWEAK_FOOTER" = "ليس من الضروري إعادة تشغيل الـSpringboard بعد التغيير.";
 "TWITTER" = "تويتر";
 "WELCOME_DESCRIPTION" = "طوّل حياة بطاريتك";
+"NOTIFY_WITH_TONE" = "Alert Tone";
+"NOTIFY_WITH_TONE_FOOTER" = "Notify with alert tone.";

@@ -13,6 +13,8 @@
 "SHOW_NOTIFICATION_FOOTER" = "Oznámit při dosáhnutí maximální úrovně nabití";
 "NOTIFY_SILENTLY" = "Doručovat potichu";
 "NOTIFY_SILENTLY_FOOTER" = "Oznámit bez zapnutí obrazovky";
+"NOTIFY_WITH_TONE" = "Alert Tone";
+"NOTIFY_WITH_TONE_FOOTER" = "Notify with alert tone.";
 "MAX_CHARGE_LEVEL" = "Maximální úrověň nabití";
 "MAX_CHARGE_LEVEL_FOOTER" = "Nastavit maximální úroveň nabití v procentech. Výchozí je 80%.";
 
