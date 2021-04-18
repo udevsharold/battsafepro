@@ -45,7 +45,12 @@ static NSBundle *tweakBundle;
 
 -(void)dismissNotification{
     [notificationListViewController dismissModalFullScreenAnimated:YES];
+    if (@available(iOS 14.0, *)){
+        SBNCNotificationDispatcher *sbNotificationDispatcher = ((SpringBoard *)[objc_getClass("UIApplication") sharedApplication]).notificationDispatcher;
+        [sbNotificationDispatcher.bannerDestination _dismissPresentedBannerOnly:YES reason:@"BattSafePro" animated:YES forceIfSticky:YES];
+    }else{
       [[objc_getClass("SBBannerController") sharedInstance] dismissBannerWithAnimation:YES reason:0 forceEvenIfBusy:YES];
+    }
       [self recallRequest];
 }
 

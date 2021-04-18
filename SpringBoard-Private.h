@@ -211,8 +211,13 @@
 -(void)destination:(id)arg1 requestsClearingNotificationRequests:(id)arg2 ;
 @end
 
+@interface SBNotificationBannerDestination : NSObject
+-(void)_dismissPresentedBannerOnly:(BOOL)arg1 reason:(id)arg2 animated:(BOOL)arg3 forceIfSticky:(BOOL)arg4 ;
+@end
+
 @interface SBNCNotificationDispatcher : NSObject
 @property (nonatomic,retain) NCNotificationDispatcher * dispatcher;
+@property (nonatomic,readonly) SBNotificationBannerDestination * bannerDestination;
 @end
 
 @interface SpringBoard : UIApplication
