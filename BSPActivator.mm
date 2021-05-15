@@ -6,7 +6,7 @@
 #import <dlfcn.h>
 #import <objc/runtime.h>
 
-extern "C" CFNotificationCenterRef CFNotificationCenterGetDistributedCenter(void);
+//extern "C" CFNotificationCenterRef CFNotificationCenterGetDistributedCenter(void);
 
 
 @implementation BSPActivator
@@ -145,8 +145,9 @@ extern "C" CFNotificationCenterRef CFNotificationCenterGetDistributedCenter(void
         [self setValue:@NO forKey:@"enabled"];
         [self postPrefsChangedNotification];
     }else if ([listenerName isEqualToString:@"battsafepro.chargenow"]){
-        CFDictionaryRef userInfo = (__bridge CFDictionaryRef)@{@"bypass":@YES};
-        CFNotificationCenterPostNotification(CFNotificationCenterGetDistributedCenter(), CFSTR("com.udevs.battsafepro.power.monitor"), NULL, userInfo, YES);
+        //CFDictionaryRef userInfo = (__bridge CFDictionaryRef)@{@"bypass":@YES};
+        //CFNotificationCenterPostNotification(CFNotificationCenterGetDistributedCenter(), CFSTR("com.udevs.battsafepro.power.monitor"), NULL, userInfo, YES);
+        CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(), (CFStringRef)POWERMONITOR_BYPASS_CHARGING_STATE_NOTIFICATION_NAME, NULL, NULL, YES);
     }
 }
 @end
