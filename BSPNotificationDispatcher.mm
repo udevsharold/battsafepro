@@ -38,7 +38,7 @@ static NSBundle *tweakBundle;
 }
 
 -(void)notifyBypass{
-    HBL(@"Will notify to bypass");
+    HBLogDebug(@"Will notify to bypass");
     
     CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(), (CFStringRef)POWERMONITOR_BYPASS_CHARGING_STATE_NOTIFICATION_NAME, NULL, NULL, YES);
 }
@@ -73,10 +73,25 @@ static NSBundle *tweakBundle;
 -(NCNotificationRequest *)requestAtLevel:(int)level{
     BBBulletinRequest* bulletin = [objc_getClass("BBBulletinRequest") new];
     
-    bulletin.header = @"BattSafePro";
-    bulletin.message = LOCALIZEDF(@"NOTI_MESSAGE", level);
-    
-    bulletin.accessoryImage = (BBImage *)[objc_getClass("BBImage") imageWithName:@"BattSafeProBulletin" inBundle:[NSBundle bundleWithPath:@"/Library/PreferenceBundles/BattSafeProPrefs.bundle"]];
+    switch (self.notifyStyle) {
+        case 0:{
+            bulletin.header = @"BattSafePro";
+            bulletin.message = LOCALIZEDF(@"NOTI_MESSAGE", level);
+            bulletin.accessoryImage = (BBImage *)[objc_getClass("BBImage") imageWithName:@"BattSafeProBulletin" inBundle:[NSBundle bundleWithPath:@"/Library/PreferenceBundles/BattSafeProPrefs.bundle"]];
+            break;
+        }
+        case 1:{
+            bulletin.header = LOCALIZEDF(@"NOTI_MESSAGE", level);
+            UIImage *image = [UIImage imageNamed:@"BattSafePro" inBundle:[NSBundle bundleWithPath:@"/Library/PreferenceBundles/BattSafeProPrefs.bundle"] compatibleWithTraitCollection:nil];
+            BBSectionIcon *sectionIcon = [[objc_getClass("BBSectionIcon") alloc] init];
+            BBSectionIconVariant *iconVariant = [objc_getClass("BBSectionIconVariant") variantWithFormat:0 imageData:UIImagePNGRepresentation(image)];
+            [sectionIcon addVariant:iconVariant];
+            bulletin.icon = sectionIcon;
+            break;
+        }
+        default:
+            break;
+    }
     
     bulletin.section = @"com.udevs.battsafepro";
     bulletin.sectionID = @"com.udevs.battsafepro";
@@ -105,7 +120,7 @@ static NSBundle *tweakBundle;
     sectionInfo.allowsNotifications = YES;
     
     BBAction *chargeNowBBAction = [objc_getClass("BBAction") actionWithLaunchURL:nil callblock:^{
-        //HBL(@"callblokc");
+        //HBLogDebug(@"callblokc");
     }];
     chargeNowBBAction.identifier = @"CHARGE_NOW";
     chargeNowBBAction.shouldDismissBulletin = YES;
@@ -169,7 +184,7 @@ static NSBundle *tweakBundle;
                 SBNCNotificationDispatcher *sbNotificationDispatcher = ((SpringBoard *)[objc_getClass("UIApplication") sharedApplication]).notificationDispatcher;
                 [sbNotificationDispatcher.dispatcher destination:nil requestsClearingNotificationRequests:@[request]];
                 [notificationListViewController removeNotificationRequest:request];
-                HBL(@"Recallled request");
+                HBLogDebug(@"Recallled request");
                 return YES;
                 break;
             }
@@ -200,8 +215,9 @@ static NSBundle *tweakBundle;
     self.enabled = [prefsManager valueForKey:@"enabled" identifier:TWEAK_IDENTIFIER] ? [[prefsManager valueForKey:@"enabled" identifier:TWEAK_IDENTIFIER] boolValue] : YES;
     self.notifySilently = [prefsManager valueForKey:@"notifySilently"  identifier:TWEAK_IDENTIFIER] ? [[prefsManager valueForKey:@"notifySilently" identifier:TWEAK_IDENTIFIER] boolValue] : YES;
     self.notifyWithTone = [prefsManager valueForKey:@"notifyWithTone"  identifier:TWEAK_IDENTIFIER] ? [[prefsManager valueForKey:@"notifyWithTone" identifier:TWEAK_IDENTIFIER] boolValue] : NO;
+    self.notifyStyle = [prefsManager valueForKey:@"notifyStyle"  identifier:TWEAK_IDENTIFIER] ? [[prefsManager valueForKey:@"notifyStyle" identifier:TWEAK_IDENTIFIER] intValue] : 1;
     //}
-    HBL(@"notifySilently: %d", self.notifySilently?1:0);
+    HBLogDebug(@"notifySilently: %d", self.notifySilently?1:0);
 }
 
 @end

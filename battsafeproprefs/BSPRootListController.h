@@ -43,4 +43,5 @@
 @property (nonatomic,retain) PSSpecifier *showNotificationSpecifier;
 @property (nonatomic,retain) PSSpecifier *notifySilentlySpecifier;
 @property (nonatomic,retain) PSSpecifier *notifyWithToneSpecifier;
+@property (nonatomic,retain) PSSpecifier *notificationStyleSelectionSpecifier;
 @end

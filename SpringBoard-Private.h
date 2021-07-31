@@ -801,6 +801,7 @@
 
 @interface BBSectionIcon : NSObject
 @property (nonatomic,copy) NSSet * variants;
+-(void)addVariant:(id)arg1 ;
 @end
 
 @interface BBBulletinRequest : BBBulletin

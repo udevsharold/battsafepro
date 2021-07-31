@@ -49,7 +49,7 @@ static void prermingCallback(){
 
 -(void)_execute:(dispatch_block_t)block{
     dispatch_async(dispatch_get_main_queue(), block);
-    HBL(@"Block executed");
+    HBLogDebug(@"Block executed");
 }
 
 -(void)execute:(PCPersistentTimer *)timer{
@@ -59,7 +59,7 @@ static void prermingCallback(){
 }
 
 -(void)wakeAndExecute:(dispatch_block_t)block delay:(double)delay{
-    HBL(@"Waking up and executing in %f seconds", delay);
+    HBLogDebug(@"Waking up and executing in %f seconds", delay);
     PCPersistentTimer *timer = [[objc_getClass("PCPersistentTimer") alloc] initWithFireDate:[[NSDate date] dateByAddingTimeInterval:delay] serviceIdentifier:TWEAK_IDENTIFIER target:self selector:@selector(execute:) userInfo:block?@{@"block":block}:nil];
     [timer setMinimumEarlyFireProportion:1];
     if ([NSThread isMainThread]) {
@@ -72,7 +72,7 @@ static void prermingCallback(){
 }
 
 -(BOOL)notifyAtLevel:(double)level{
-    HBL(@"Will notify at level: %f", level);
+    HBLogDebug(@"Will notify at level: %f", level);
     
     NSDictionary *ret = [_ndMessagingCenter sendMessageAndReceiveReplyName:@"dispatchRequest" userInfo:@{@"level":@(level)}];
     return [ret[@"result"] boolValue];
@@ -82,7 +82,7 @@ static void prermingCallback(){
     NSDictionary *ret = [_ndMessagingCenter sendMessageAndReceiveReplyName:@"recallRequest" userInfo:nil];
     return [ret[@"result"] boolValue];
     self.notificationDelivered = NO;
-    HBL(@"Recalled notification");
+    HBLogDebug(@"Recalled notification");
 }
 
 -(void)destroyState{
@@ -93,13 +93,13 @@ static void prermingCallback(){
 -(void)resetState{
     //[self notifyChargingState:NO];
     [self notifyChargingState:YES];
-    HBL(@"resetState");
+    HBLogDebug(@"resetState");
 }
 
 -(void)bypassState{
     self.fullChargeBypass = YES;
     [self resetState];
-    HBL(@"Bypassed BattSafe");
+    HBLogDebug(@"Bypassed BattSafe");
 }
 
 -(void)createPowerdXPCConnection{
@@ -125,7 +125,7 @@ static void prermingCallback(){
 }
 
 -(void)notifySleepingState:(BOOL)sleep{
-    HBL(@"Will notify to %@", sleep?@"be able to sleep again":@"standy system");
+    HBLogDebug(@"Will notify to %@", sleep?@"be able to sleep again":@"standy system");
     
     xpc_object_t message = xpc_dictionary_create(NULL, NULL, 0);
     xpc_dictionary_set_bool(message, "BATTSAFEPRO_updateSleepingState", sleep);
@@ -133,7 +133,7 @@ static void prermingCallback(){
 }
 
 -(void)notifyChargingState:(BOOL)enableCharging{
-    HBL(@"Will notify %@ charging", enableCharging?@"start":@"stop");
+    HBLogDebug(@"Will notify %@ charging", enableCharging?@"start":@"stop");
     
     xpc_object_t message = xpc_dictionary_create(NULL, NULL, 0);
     xpc_dictionary_set_bool(message, "BATTSAFEPRO_updateChargingState", enableCharging);
@@ -166,13 +166,13 @@ static void prermingCallback(){
 
 -(void)levelChanged:(double)level{
     
-    //HBL(@"chargingAssertionHeld: %d", [self chargingAssertionHeld]?1:0);
+    //HBLogDebug(@"chargingAssertionHeld: %d", [self chargingAssertionHeld]?1:0);
     if (self.enabled && !self.isPrerming){
         BOOL isCurrentlyExternalConnected = [self isExternalConnected];
         BOOL isCurrentlyCharging = [self isCurrentlyCharging];
         
         if (isCurrentlyExternalConnected && !self.fullChargeBypass){
-            HBL(@"Handle Level changed to %f, external: %d, charging: %d", level, isCurrentlyExternalConnected?1:0, isCurrentlyCharging?1:0);
+            HBLogDebug(@"Handle Level changed to %f, external: %d, charging: %d", level, isCurrentlyExternalConnected?1:0, isCurrentlyCharging?1:0);
             
             if (self.lastBatteryLevel != level){
                 self.lastBatteryLevel = level;
@@ -195,7 +195,7 @@ static void prermingCallback(){
                     dispatch_block_t block = dispatch_block_create(static_cast<dispatch_block_flags_t>(0), ^{
                         [self notifyChargingState:NO];
                         self.disableChargingBlock = nil;
-                        HBL(@"Stopped charging at %f", level);
+                        HBLogDebug(@"Stopped charging at %f", level);
                     });
                     
                     if (level >= self.lastBatteryLevel){
@@ -230,22 +230,22 @@ static void prermingCallback(){
                     
                     /*
                      BOOL gracingInEffect = self.gracingEnabled && self.gracingActive && (level > (self.maxChargingLevel - self.gracingDepth));
-                     HBL(@"gracingInEffect: %d", gracingInEffect?1:0);
+                     HBLogDebug(@"gracingInEffect: %d", gracingInEffect?1:0);
                      */
                     
                     if (!isCurrentlyCharging /*&& !gracingInEffect*/) {
-                        HBL(@"******* begin charging");
+                        HBLogDebug(@"******* begin charging");
                         if (!self.enableChargingBlock){
                             self.enableChargingBlock = dispatch_block_create(static_cast<dispatch_block_flags_t>(0), ^{
                                 [self resetState];
                                 self.enableChargingBlock = nil;
-                                HBL(@"Charging at %f", level);
+                                HBLogDebug(@"Charging at %f", level);
                             });
                             
                             [self wakeAndExecute:self.enableChargingBlock delay:1];
                         }
                     }/*else{
-                      HBL(@"******* NOT charging");
+                      HBLogDebug(@"******* NOT charging");
                       }
                       */
                     
@@ -276,7 +276,7 @@ static void prermingCallback(){
             
             
             //if (!self.refreshing) [self notifyReleaseChargingAssertionIfHeld];
-            //HBL(@"External disconnected");
+            //HBLogDebug(@"External disconnected");
         }
         self.lastExternalConnectedState = isCurrentlyExternalConnected ? 1 : 0;
     }
@@ -319,7 +319,7 @@ static void prermingCallback(){
     //self.gracingActive = NO;
     [self levelChanged:[self currentBatteryLevel]];
     
-    HBL(@"maxChargingLevel: %f", self.maxChargingLevel);
+    HBLogDebug(@"maxChargingLevel: %f", self.maxChargingLevel);
 }
 
 -(void)refreshMonitor{
@@ -330,7 +330,7 @@ static void prermingCallback(){
 }
 
 -(void)prerming{
-    HBL(@"prerming");
+    HBLogDebug(@"prerming");
     self.isPrerming = YES;
     [self resetState];
     [self notifySleepingState:YES];

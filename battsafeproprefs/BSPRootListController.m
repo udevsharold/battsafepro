@@ -4,7 +4,7 @@
 #import "BSPDiagnosticController.h"
 #import "../NSTask.h"
 
-#define CONTRIBUTORS @"peterfectionn, xiehq, Crevette, u/vladaad, himajin"
+#define CONTRIBUTORS @"peterfectionn, xiehq, Crevette, u/vladaad, himajin, xiangfeidexiaohuo"
 
 static NSBundle *tweakBundle;
 
@@ -124,6 +124,21 @@ void reloadAllSpecifiers() {
         [enabledSpec setProperty:PREFS_CHANGED_NOTIFICATION_NAME forKey:@"PostNotification"];
         [rootSpecifiers addObject:enabledSpec];
         
+        //max charging level
+        PSSpecifier *maxChargingLevelGroupSpec = [PSSpecifier preferenceSpecifierNamed:@"" target:nil set:nil get:nil detail:nil cell:PSGroupCell edit:nil];
+        [maxChargingLevelGroupSpec setProperty:LOCALIZED(@"MAX_CHARGE_LEVEL_FOOTER") forKey:@"footerText"];
+        [rootSpecifiers addObject:maxChargingLevelGroupSpec];
+        
+        
+        PSTextFieldSpecifier* maxChargingLevelSpec = [PSTextFieldSpecifier preferenceSpecifierNamed:LOCALIZED(@"MAX_CHARGE_LEVEL") target:self set:@selector(setPreferenceValue:specifier:) get:@selector(readPreferenceValue:) detail:nil cell:PSEditTextCell edit:nil];
+        [maxChargingLevelSpec setKeyboardType:UIKeyboardTypeNumberPad autoCaps:UITextAutocapitalizationTypeNone autoCorrection:UITextAutocorrectionTypeNo];
+        [maxChargingLevelSpec setPlaceholder:[@(defaultMaxChargingLevel) stringValue]];
+        [maxChargingLevelSpec setProperty:@"maxChargingLevel" forKey:@"key"];
+        [maxChargingLevelSpec setProperty:TWEAK_IDENTIFIER forKey:@"defaults"];
+        [maxChargingLevelSpec setProperty:LOCALIZED(@"MAX_CHARGE_LEVEL") forKey:@"label"];
+        [maxChargingLevelSpec setProperty:PREFS_CHANGED_NOTIFICATION_NAME forKey:@"PostNotification"];
+        [rootSpecifiers addObject:maxChargingLevelSpec];
+        
         //show notification
         PSSpecifier *showNotificationGroupSpec = [PSSpecifier preferenceSpecifierNamed:@"" target:self set:nil get:nil detail:nil cell:PSGroupCell edit:nil];
         [showNotificationGroupSpec setProperty:LOCALIZED(@"SHOW_NOTIFICATION_FOOTER") forKey:@"footerText"];
@@ -138,6 +153,19 @@ void reloadAllSpecifiers() {
         self.showNotificationSpecifier = showNotificationSpec;
         [rootSpecifiers addObject:showNotificationSpec];
         
+        //notification style
+        PSSpecifier *notificationStyleGroupSpec = [PSSpecifier preferenceSpecifierNamed:@""  target:nil set:nil get:nil detail:nil cell:PSGroupCell edit:nil];
+        [notificationStyleGroupSpec setProperty:LOCALIZED(@"NOTIFICATION_STYLE_FOOTER") forKey:@"footerText"];
+        [rootSpecifiers addObject:notificationStyleGroupSpec];
+        
+        PSSpecifier *notificationStyleSelectionSpec = [PSSpecifier preferenceSpecifierNamed:LOCALIZED(@"NOTIFICATION_STYLE")  target:self set:@selector(setPreferenceValue:specifier:) get:@selector(readPreferenceValue:) detail:nil cell:PSSegmentCell edit:nil];
+        [notificationStyleSelectionSpec setValues:@[@0, @1] titles:@[LOCALIZED(@"NOTIFICATION_STYLE_DEFAULT"), LOCALIZED(@"NOTIFICATION_STYLE_COMPACT")]];
+        [notificationStyleSelectionSpec setProperty:@1 forKey:@"default"];
+        [notificationStyleSelectionSpec setProperty:@"notifyStyle" forKey:@"key"];
+        [notificationStyleSelectionSpec setProperty:TWEAK_IDENTIFIER forKey:@"defaults"];
+        [notificationStyleSelectionSpec setProperty:PREFS_CHANGED_NOTIFICATION_NAME forKey:@"PostNotification"];
+        self.notificationStyleSelectionSpecifier = notificationStyleSelectionSpec;
+        [rootSpecifiers addObject:notificationStyleSelectionSpec];
         
         //wake screen
         PSSpecifier *notifySilentlyGroupSpec = [PSSpecifier preferenceSpecifierNamed:@"" target:self set:nil get:nil detail:nil cell:PSGroupCell edit:nil];
@@ -167,24 +195,11 @@ void reloadAllSpecifiers() {
         self.notifyWithToneSpecifier = notifyWithToneSpec;
         [rootSpecifiers addObject:notifyWithToneSpec];
         
-        
-        //max charging level
-        PSSpecifier *maxChargingLevelGroupSpec = [PSSpecifier preferenceSpecifierNamed:@"" target:nil set:nil get:nil detail:nil cell:PSGroupCell edit:nil];
-        [maxChargingLevelGroupSpec setProperty:LOCALIZED(@"MAX_CHARGE_LEVEL_FOOTER") forKey:@"footerText"];
-        [rootSpecifiers addObject:maxChargingLevelGroupSpec];
-        
-        
-        PSTextFieldSpecifier* maxChargingLevelSpec = [PSTextFieldSpecifier preferenceSpecifierNamed:LOCALIZED(@"MAX_CHARGE_LEVEL") target:self set:@selector(setPreferenceValue:specifier:) get:@selector(readPreferenceValue:) detail:nil cell:PSEditTextCell edit:nil];
-        [maxChargingLevelSpec setKeyboardType:UIKeyboardTypeNumberPad autoCaps:UITextAutocapitalizationTypeNone autoCorrection:UITextAutocorrectionTypeNo];
-        [maxChargingLevelSpec setPlaceholder:[@(defaultMaxChargingLevel) stringValue]];
-        [maxChargingLevelSpec setProperty:@"maxChargingLevel" forKey:@"key"];
-        [maxChargingLevelSpec setProperty:TWEAK_IDENTIFIER forKey:@"defaults"];
-        [maxChargingLevelSpec setProperty:LOCALIZED(@"MAX_CHARGE_LEVEL") forKey:@"label"];
-        [maxChargingLevelSpec setProperty:PREFS_CHANGED_NOTIFICATION_NAME forKey:@"PostNotification"];
-        [rootSpecifiers addObject:maxChargingLevelSpec];
-        
         //blsnk group
         PSSpecifier *blankSpecGroup = [PSSpecifier preferenceSpecifierNamed:@"" target:self set:nil get:nil detail:nil cell:PSGroupCell edit:nil];
+        [rootSpecifiers addObject:blankSpecGroup];
+        
+        //blsnk group
         [rootSpecifiers addObject:blankSpecGroup];
         
         //show welcome
@@ -212,6 +227,7 @@ void reloadAllSpecifiers() {
             [diagnosticViewSpec setButtonAction:@selector(showDiagnosticScreen)];
             [rootSpecifiers addObject:diagnosticViewSpec];
         }
+        
         //blsnk group
         [rootSpecifiers addObject:blankSpecGroup];
         [rootSpecifiers addObject:blankSpecGroup];
@@ -273,10 +289,12 @@ void reloadAllSpecifiers() {
         [self.notifySilentlySpecifier setProperty:value forKey:@"enabled"];
         [self reloadSpecifier:self.notifySilentlySpecifier animated:YES];
         [self.notifyWithToneSpecifier setProperty:value forKey:@"enabled"];
+        [self.notificationStyleSelectionSpecifier setProperty:value forKey:@"enabled"];
         if ([self.notifySilentlySpecifier.properties[@"value"] boolValue]){
             [self.notifyWithToneSpecifier setProperty:@NO forKey:@"enabled"];
         }
         [self reloadSpecifier:self.notifyWithToneSpecifier animated:YES];
+        [self reloadSpecifier:self.notificationStyleSelectionSpecifier animated:YES];
     }else if ([specifier.properties[@"key"] isEqualToString:@"notifySilently"]){
         [self.notifyWithToneSpecifier setProperty:@(![value boolValue]) forKey:@"enabled"];
         if (![self.showNotificationSpecifier.properties[@"value"] boolValue]){
@@ -293,12 +311,16 @@ void reloadAllSpecifiers() {
         CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(), (CFStringRef)REFRESH_MODULE_NOTIFICATION_NAME, NULL, NULL, YES);
     }else if ([specifier.properties[@"key"] isEqualToString:@"showNotification"]){
         [self.notifySilentlySpecifier setProperty:value forKey:@"enabled"];
+        [self.notificationStyleSelectionSpecifier setProperty:value forKey:@"enabled"];
         [self reloadSpecifier:self.notifySilentlySpecifier animated:YES];
+        [self reloadSpecifier:self.notificationStyleSelectionSpecifier animated:YES];
         [self.notifyWithToneSpecifier setProperty:value forKey:@"enabled"];
+        [self.notificationStyleSelectionSpecifier setProperty:value forKey:@"enabled"];
         if ([self.notifySilentlySpecifier.properties[@"value"] boolValue]){
             [self.notifyWithToneSpecifier setProperty:@NO forKey:@"enabled"];
         }
         [self reloadSpecifier:self.notifyWithToneSpecifier animated:YES];
+        [self reloadSpecifier:self.notificationStyleSelectionSpecifier animated:YES];
     }else if ([specifier.properties[@"key"] isEqualToString:@"notifySilently"]){
         [self.notifyWithToneSpecifier setProperty:@(![value boolValue]) forKey:@"enabled"];
         if (![self.showNotificationSpecifier.properties[@"value"] boolValue]){

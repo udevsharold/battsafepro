@@ -12,10 +12,11 @@ include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = BattSafePro
 
-BattSafePro_FILES = $(wildcard *.xm) $(wildcard *.mm)
-BattSafePro_CFLAGS = -fobjc-arc
-BattSafePro_PRIVATE_FRAMEWORKS = IOKit AppSupport
-BattSafePro_LIBRARIES = rocketbootstrap
+$(TWEAK_NAME)_FILES = $(wildcard *.xm) $(wildcard *.mm)
+$(TWEAK_NAME)_CFLAGS = -fobjc-arc -DWRITELOG=0 -DPACKNAME=$(THEOS_PACKAGE_NAME) -DPACKVERSION=$(THEOS_PACKAGE_BASE_VERSION)
+$(TWEAK_NAME)_PRIVATE_FRAMEWORKS = IOKit AppSupport
+$(TWEAK_NAME)_LIBRARIES = rocketbootstrap
+$(TWEAK_NAME)_FRAMEWORKS = QuartzCore UIKit
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 SUBPROJECTS += battsafeproprefs

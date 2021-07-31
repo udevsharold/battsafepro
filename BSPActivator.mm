@@ -137,7 +137,7 @@
 }
 
 - (void)activator:(LAActivator *)activator receiveEvent:(LAEvent *)event forListenerName:(NSString *)listenerName{
-    HBL(@"listenerName: %@", listenerName);
+    HBLogDebug(@"listenerName: %@", listenerName);
     if ([listenerName isEqualToString:@"battsafepro.enable"]){
         [self setValue:@YES forKey:@"enabled"];
         [self postPrefsChangedNotification];

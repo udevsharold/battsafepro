@@ -85,7 +85,7 @@ static void debugBattSafe(){
                     CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)reloadNotification, (CFStringRef)@"SBSpringBoardDidLaunchNotification", NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
                     //CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)debugBattSafe, (CFStringRef)@"battsafe.debug", NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
 
-                    HBL(@"Injected into symptomsd");
+                    HBLogDebug(@"Injected into symptomsd");
                     rocketbootstrap_unlock("com.udevs.battsafepro.center.powermanager");
 
                 }
@@ -94,7 +94,7 @@ static void debugBattSafe(){
                     %init(SPRINGBOARD_PROCESS);
                     reloadPrefs();
                     CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)reloadPrefs, (CFStringRef)PREFS_CHANGED_NOTIFICATION_NAME, NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
-                    HBL(@"Injected into SpringBoard");
+                    HBLogDebug(@"Injected into SpringBoard");
                 }
             }
         }

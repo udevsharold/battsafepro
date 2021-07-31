@@ -10,6 +10,10 @@
 "ENABLED" = "Activé";
 "SHOW_NOTIFICATION" = "Notification";
 "SHOW_NOTIFICATION_FOOTER" = "Envoyer une notification quand la charge maximale est atteinte.";
+"NOTIFICATION_STYLE" = "Notification Style";
+"NOTIFICATION_STYLE_DEFAULT" = "Default";
+"NOTIFICATION_STYLE_COMPACT" = "Compact";
+"NOTIFICATION_STYLE_FOOTER" = "Set notification style.";
 "NOTIFY_SILENTLY" = "Notification silencieuses";
 "NOTIFY_SILENTLY_FOOTER" = "Notifier sans allumer l'écran.";
 "NOTIFY_WITH_TONE" = "Alert Tone";

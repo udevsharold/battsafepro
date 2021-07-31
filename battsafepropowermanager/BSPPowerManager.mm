@@ -70,13 +70,13 @@ static IOReturn chargingAssertionSuccess = KERN_FAILURE;
         IOPMAssertionRelease(chargingAssertionID);
     }
     chargingAssertionSuccess = KERN_FAILURE;
-    //HBL(@"Starts charging");
+    //HBLogDebug(@"Starts charging");
 }
 
 -(void)disableCharging{
     IOPMAssertionRelease(chargingAssertionID);
     chargingAssertionSuccess = IOPMAssertionCreateWithName(kIOPMChargeInhibitAssertion, kIOPMAssertionLevelOn, kIOPMAssertionTypeInhibitCharging, &chargingAssertionID);
-    //HBL(@"Stops charging");
+    //HBLogDebug(@"Stops charging");
 }
 
 -(void)updateChargingState:(BOOL)enableCharging{

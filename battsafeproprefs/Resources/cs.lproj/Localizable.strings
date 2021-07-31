@@ -11,6 +11,10 @@
 "ENABLED" = "Zapnuto";
 "SHOW_NOTIFICATION" = "Oznámení";
 "SHOW_NOTIFICATION_FOOTER" = "Oznámit při dosáhnutí maximální úrovně nabití";
+"NOTIFICATION_STYLE" = "Notification Style";
+"NOTIFICATION_STYLE_DEFAULT" = "Default";
+"NOTIFICATION_STYLE_COMPACT" = "Compact";
+"NOTIFICATION_STYLE_FOOTER" = "Set notification style.";
 "NOTIFY_SILENTLY" = "Doručovat potichu";
 "NOTIFY_SILENTLY_FOOTER" = "Oznámit bez zapnutí obrazovky";
 "NOTIFY_WITH_TONE" = "Alert Tone";

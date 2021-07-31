@@ -1,6 +1,7 @@
 #include <Foundation/Foundation.h>
 #include <UIKit/UIKit.h>
 #include <HBLog.h>
+#include <Tweak+Debug.h>
 
 #define TWEAK_IDENTIFIER @"com.udevs.battsafepro"
 #define PREFS_CHANGED_NOTIFICATION_NAME @"com.udevs.battsafepro.prefschanged"

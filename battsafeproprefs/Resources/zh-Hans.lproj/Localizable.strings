@@ -2,7 +2,7 @@
 
 //=====================Notification=====================
 "NOTI_MESSAGE" = "充电停止，已达到 %d%%";
-"NOTI_CHARGE_NOW" = "继续充电";
+"NOTI_CHARGE_NOW" = "恢复充电";
 
 
 //=====================Preferences=====================
@@ -10,18 +10,22 @@
 "TWEAK_FOOTER" = "所有设置修改无需注销。";
 "ENABLED" = "开启";
 "SHOW_NOTIFICATION" = "推送通知";
-"SHOW_NOTIFICATION_FOOTER" = "冲电停止到设置的最高电量后通知我。";
-"NOTIFY_SILENTLY" = "Deliver Quietly";
-"NOTIFY_SILENTLY_FOOTER" = "Notify without waking up the screen.";
-"NOTIFY_WITH_TONE" = "Alert Tone";
-"NOTIFY_WITH_TONE_FOOTER" = "Notify with alert tone.";
+"SHOW_NOTIFICATION_FOOTER" = "充电到设置的最高电量后通知我。";
+"NOTIFICATION_STYLE" = "Notification Style";
+"NOTIFICATION_STYLE_DEFAULT" = "Default";
+"NOTIFICATION_STYLE_COMPACT" = "Compact";
+"NOTIFICATION_STYLE_FOOTER" = "Set notification style.";
+"NOTIFY_SILENTLY" = "静默通知";
+"NOTIFY_SILENTLY_FOOTER" = "在不唤醒屏幕的情况下进行通知。";
+"NOTIFY_WITH_TONE" = "提示音";
+"NOTIFY_WITH_TONE_FOOTER" = "通知时发出提示音。";
 "MAX_CHARGE_LEVEL" = "最高电量";
-"MAX_CHARGE_LEVEL_FOOTER" = "设置最高充电电量 (%)，默认为 80% 。";
+"MAX_CHARGE_LEVEL_FOOTER" = "设置最高充电电量(%)，默认为80% 。";
 
 "DEVELOPMENT" = "插件开发";
 "SUPPORT" = "支持开发者";
 "CONTACT" = "联系";
-"TWITTER" = "Twitter";
+"TWITTER" = "推特";
 "REDDIT" = "Reddit";
 "FOOTER_CREATED" = "由 udevs 开发";
 "FOOTER_CREDITS" = "特别感谢\n%@";
@@ -31,33 +35,33 @@
 "ANSWER_YES" = "是的";
 "ANSWER_NO" = "算了";
 
-"ONBOARDING_SCREEN_SHOW" = "Show Onboarding Screen";
-"ONBOARDING_ALERT_SHOW" = "Show Onboarding Alert";
+"ONBOARDING_SCREEN_SHOW" = "显示过充详情";
+"ONBOARDING_ALERT_SHOW" = "显示过充警告";
 
-"OVERSHOOTING_HEADER" = "Overshooting";
-"OVERSHOOTING_MESSAGE" = "Sometimes you'll notice that the charged percentage overshoot by around 1-2% more than the preferred max charge level and that's perfectly normal. iOS occasionally decides not to update the percentage until the next cycle, especially when the device is in very deep sleep. Moreover, the percentage that shows is just an estimation by iOS itself and is not absolute accurate numerically. However, BattSafePro has already trying its best in intelligently mitigating this.";
-"ANSWER_GOT_IT" = "Got it";
+"OVERSHOOTING_HEADER" = "过充";
+"OVERSHOOTING_MESSAGE" = "有时您会注意到，充电百分比超过首选最大充电水平大约1-2％，这完全正常。iOS偶尔会在下一个充电周期前不更新百分比，尤其是在设备处于深度睡眠状态时。此外，显示的百分比仅是iOS本身的估算值，并不是绝对准确的数字，但是BattSafePro已经尽了最大的努力来缓解这种情况。";
+"ANSWER_GOT_IT" = "知道了";
 
-"WELCOME_DESCRIPTION" = "Prolong your battery life";
+"WELCOME_DESCRIPTION" = "延长电池寿命";
 
-"OPTIMIZED_CHARGING_HEADER" = "Optimized Charging";
-"OPTIMIZED_CHARGING_MESSAGE" = "It's highly recommended to disable Apple's optimized charging for best experience.";
+"OPTIMIZED_CHARGING_HEADER" = "优化充电";
+"OPTIMIZED_CHARGING_MESSAGE" = "强烈建议禁用苹果的优化充电功能以获得最佳体验。";
 
-"ACTIVATOR_SUPPORT_HEADER" = "Activator Support";
-"ACTIVATOR_SUPPORT_MESSAGE" = "Activator is supported by BattSafePro. Get it for more personal customizations.";
+"ACTIVATOR_SUPPORT_HEADER" = "支持Activator";
+"ACTIVATOR_SUPPORT_MESSAGE" = "BattSafePro支持Activator，可以获取更多的个性化定制。";
 
 //Diagnostic Screen
-"DIAGNOSTIC_SCREEN_SHOW" = "Show Diagnostic Screen";
-"DIAGNOSTIC_ALERT_SHOW" = "Show Diagnostic Alert";
-"DIAGNOSTIC_TITLE" = "Diagnostic Info";
-"DIAGNOSTIC_DESCRIPTION" = "Overview of Current System Status\n\nIf you experiencing any issue, reboot and rejailbreak instead of userspace reboot/ldrestart.";
+"DIAGNOSTIC_SCREEN_SHOW" = "显示诊断详情";
+"DIAGNOSTIC_ALERT_SHOW" = "显示诊断警报";
+"DIAGNOSTIC_TITLE" = "诊断信息";
+"DIAGNOSTIC_DESCRIPTION" = "当前系统状态概述\n如果遇到任何问题，请重新越狱，而不是用户空间重启/软重启设备。";
 
-"DIAGNOSTIC_BATTSAFEPRO_IN_EFFECT" = "BattSafePro in Effect";
-"DIAGNOSTIC_CHARGING" = "Battery Currently Charging";
-"DIAGNOSTIC_CHARGING_DESCRIPTION" = "Status update by system will take handful of seconds, keep refreshing.";
-"DIAGNOSTIC_CHARGING_PROHIBITED" = "Battery Charging Prohibited";
-"DIAGNOSTIC_EXTERNAL" = "External Source Connected";
-"DIAGNOSTIC_EXTERNAL_CAPABLE" = "External Source Capable of Charging";
+"DIAGNOSTIC_BATTSAFEPRO_IN_EFFECT" = "BattSafePro正在运行";
+"DIAGNOSTIC_CHARGING" = "电池当前正在充电";
+"DIAGNOSTIC_CHARGING_DESCRIPTION" = "系统更新状态需要几秒钟，保持刷新中。";
+"DIAGNOSTIC_CHARGING_PROHIBITED" = "充电完成";
+"DIAGNOSTIC_EXTERNAL" = "外接电源已连接";
+"DIAGNOSTIC_EXTERNAL_CAPABLE" = "外接电源正在充电";
 
-"DIAGNOSTIC_BUTTON_REFRESH" = "Refresh";
-"DIAGNOSTIC_BUTTON_CLOSE" = "Close";
+"DIAGNOSTIC_BUTTON_REFRESH" = "刷新";
+"DIAGNOSTIC_BUTTON_CLOSE" = "关闭";

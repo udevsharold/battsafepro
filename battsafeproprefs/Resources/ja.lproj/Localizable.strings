@@ -11,6 +11,10 @@
 "ENABLED" = "有効";
 "SHOW_NOTIFICATION" = "通知する";
 "SHOW_NOTIFICATION_FOOTER" = "設定した充電量になると通知されます";
+"NOTIFICATION_STYLE" = "Notification Style";
+"NOTIFICATION_STYLE_DEFAULT" = "Default";
+"NOTIFICATION_STYLE_COMPACT" = "Compact";
+"NOTIFICATION_STYLE_FOOTER" = "Set notification style.";
 "NOTIFY_SILENTLY" = "通知バナーの表示なし";
 "NOTIFY_SILENTLY_FOOTER" = "通知センターのみに表示します";
 "NOTIFY_WITH_TONE" = "Alert Tone";

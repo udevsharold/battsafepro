@@ -45,3 +45,7 @@
 "WELCOME_DESCRIPTION" = "طوّل حياة بطاريتك";
 "NOTIFY_WITH_TONE" = "Alert Tone";
 "NOTIFY_WITH_TONE_FOOTER" = "Notify with alert tone.";
+"NOTIFICATION_STYLE" = "Notification Style";
+"NOTIFICATION_STYLE_DEFAULT" = "Default";
+"NOTIFICATION_STYLE_COMPACT" = "Compact";
+"NOTIFICATION_STYLE_FOOTER" = "Set notification style.";

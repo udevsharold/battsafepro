@@ -11,6 +11,10 @@
 "ENABLED" = "Enabled";
 "SHOW_NOTIFICATION" = "Notification";
 "SHOW_NOTIFICATION_FOOTER" = "Notify when max charge level is reached.";
+"NOTIFICATION_STYLE" = "Notification Style";
+"NOTIFICATION_STYLE_DEFAULT" = "Default";
+"NOTIFICATION_STYLE_COMPACT" = "Compact";
+"NOTIFICATION_STYLE_FOOTER" = "Set notification style.";
 "NOTIFY_SILENTLY" = "Deliver Quietly";
 "NOTIFY_SILENTLY_FOOTER" = "Notify without waking up the screen.";
 "NOTIFY_WITH_TONE" = "Alert Tone";
