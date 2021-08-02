@@ -27,3 +27,9 @@
 #define bundlePath @"/Library/PreferenceBundles/BattSafeProPrefs.bundle"
 #define LOCALIZEDF(str, ...) [NSString stringWithFormat:[tweakBundle localizedStringForKey:str value:@"" table:nil], ##__VA_ARGS__]
 #define LOCALIZED(str) [tweakBundle localizedStringForKey:str value:@"" table:nil]
+
+
+typedef NS_ENUM(NSInteger, NotificationStyle){
+    NotificationStyleDefault,
+    NotificationStyleCompact
+};

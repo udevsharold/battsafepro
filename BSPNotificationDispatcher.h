@@ -7,7 +7,7 @@
 }
 @property(nonatomic, assign) BOOL notifySilently;
 @property(nonatomic, assign) BOOL notifyWithTone;
-@property(nonatomic, assign) int notifyStyle;
+@property(nonatomic, assign) NotificationStyle notifyStyle;
 @property(nonatomic, assign) BOOL enabled;
 @property(nonatomic, assign) BOOL firstInit;
 +(id)sharedInstance;

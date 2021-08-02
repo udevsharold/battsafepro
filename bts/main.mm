@@ -94,18 +94,18 @@ int main(int argc, char *argv[], char *envp[]) {
     extern char *optarg;
     extern int optind;
     int opt;
-    while ((opt = getopt(argc, argv, "c:r")) != -1){
+    while ((opt = getopt(argc, argv, "spr")) != -1){
         //switch based on option
         switch (opt){
-            case 'c':{
-                NSMutableArray *commandList = [NSMutableArray array];
-                for (int i = 2; i < argc; i++) {
-                    NSString *cmd = [[NSString alloc] initWithCString:argv[i] encoding:NSUTF8StringEncoding];
-                    [commandList addObject:cmd];
-                }
-                
+            case 's':{
                 elevateAsRoot();
-                NSDictionary *result = runCommand([commandList componentsJoinedByString:@" "]);
+                NSDictionary *result = runCommand(@"killall -9 symptomsd");
+                return [result[@"exitCode"] intValue];
+                break;
+            }
+            case 'p':{
+                elevateAsRoot();
+                NSDictionary *result = runCommand(@"killall -9 powerd");
                 return [result[@"exitCode"] intValue];
                 break;
             }

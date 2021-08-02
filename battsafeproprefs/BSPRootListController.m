@@ -159,8 +159,8 @@ void reloadAllSpecifiers() {
         [rootSpecifiers addObject:notificationStyleGroupSpec];
         
         PSSpecifier *notificationStyleSelectionSpec = [PSSpecifier preferenceSpecifierNamed:LOCALIZED(@"NOTIFICATION_STYLE")  target:self set:@selector(setPreferenceValue:specifier:) get:@selector(readPreferenceValue:) detail:nil cell:PSSegmentCell edit:nil];
-        [notificationStyleSelectionSpec setValues:@[@0, @1] titles:@[LOCALIZED(@"NOTIFICATION_STYLE_DEFAULT"), LOCALIZED(@"NOTIFICATION_STYLE_COMPACT")]];
-        [notificationStyleSelectionSpec setProperty:@1 forKey:@"default"];
+        [notificationStyleSelectionSpec setValues:@[@(NotificationStyleDefault), @(NotificationStyleCompact)] titles:@[LOCALIZED(@"NOTIFICATION_STYLE_DEFAULT"), LOCALIZED(@"NOTIFICATION_STYLE_COMPACT")]];
+        [notificationStyleSelectionSpec setProperty:@(NotificationStyleCompact) forKey:@"default"];
         [notificationStyleSelectionSpec setProperty:@"notifyStyle" forKey:@"key"];
         [notificationStyleSelectionSpec setProperty:TWEAK_IDENTIFIER forKey:@"defaults"];
         [notificationStyleSelectionSpec setProperty:PREFS_CHANGED_NOTIFICATION_NAME forKey:@"PostNotification"];
@@ -352,8 +352,8 @@ void reloadAllSpecifiers() {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"BattSafePro" message:LOCALIZED(@"RESPRING_MESSAGE") preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *yesAction = [UIAlertAction actionWithTitle:LOCALIZED(@"ANSWER_YES") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        [self runCommand:@"/usr/local/bin/bts -c \"killall -9 symptomsd\""];
-        [self runCommand:@"/usr/local/bin/bts -c \"killall -9 powerd\""];
+        [self runCommand:@"/usr/local/bin/bts -s"];
+        [self runCommand:@"/usr/local/bin/bts -p"];
         
         NSURL *relaunchURL = [NSURL URLWithString:@"prefs:root=BattSafePro"];
         SBSRelaunchAction *restartAction = [NSClassFromString(@"SBSRelaunchAction") actionWithReason:@"RestartRenderServer" options:4 targetURL:relaunchURL];

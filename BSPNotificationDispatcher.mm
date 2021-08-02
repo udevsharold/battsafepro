@@ -70,27 +70,29 @@ static NSBundle *tweakBundle;
     [self dismissNotification];
 }
 
+//BBObserver method - <iOS 14.0
+- (id)cachedComposedImageForBulletin:(id)arg1 attachment:(id)arg2{
+    return nil;
+}
+
 -(NCNotificationRequest *)requestAtLevel:(int)level{
     BBBulletinRequest* bulletin = [objc_getClass("BBBulletinRequest") new];
     
     switch (self.notifyStyle) {
-        case 0:{
+        case NotificationStyleCompact:{
+            bulletin.header = LOCALIZEDF(@"NOTI_MESSAGE", level);
+            BBSectionIcon *sectionIcon = [[objc_getClass("BBSectionIcon") alloc] init];
+            BBSectionIconVariant *iconVariant = [objc_getClass("BBSectionIconVariant") variantWithFormat:0 imageName:@"BattSafePro" inBundle:[NSBundle bundleWithPath:@"/Library/PreferenceBundles/BattSafeProPrefs.bundle"]];
+            [sectionIcon addVariant:iconVariant];
+            bulletin.icon = sectionIcon;
+            break;
+        }
+         default :{
             bulletin.header = @"BattSafePro";
             bulletin.message = LOCALIZEDF(@"NOTI_MESSAGE", level);
             bulletin.accessoryImage = (BBImage *)[objc_getClass("BBImage") imageWithName:@"BattSafeProBulletin" inBundle:[NSBundle bundleWithPath:@"/Library/PreferenceBundles/BattSafeProPrefs.bundle"]];
             break;
         }
-        case 1:{
-            bulletin.header = LOCALIZEDF(@"NOTI_MESSAGE", level);
-            UIImage *image = [UIImage imageNamed:@"BattSafePro" inBundle:[NSBundle bundleWithPath:@"/Library/PreferenceBundles/BattSafeProPrefs.bundle"] compatibleWithTraitCollection:nil];
-            BBSectionIcon *sectionIcon = [[objc_getClass("BBSectionIcon") alloc] init];
-            BBSectionIconVariant *iconVariant = [objc_getClass("BBSectionIconVariant") variantWithFormat:0 imageData:UIImagePNGRepresentation(image)];
-            [sectionIcon addVariant:iconVariant];
-            bulletin.icon = sectionIcon;
-            break;
-        }
-        default:
-            break;
     }
     
     bulletin.section = @"com.udevs.battsafepro";
@@ -215,7 +217,7 @@ static NSBundle *tweakBundle;
     self.enabled = [prefsManager valueForKey:@"enabled" identifier:TWEAK_IDENTIFIER] ? [[prefsManager valueForKey:@"enabled" identifier:TWEAK_IDENTIFIER] boolValue] : YES;
     self.notifySilently = [prefsManager valueForKey:@"notifySilently"  identifier:TWEAK_IDENTIFIER] ? [[prefsManager valueForKey:@"notifySilently" identifier:TWEAK_IDENTIFIER] boolValue] : YES;
     self.notifyWithTone = [prefsManager valueForKey:@"notifyWithTone"  identifier:TWEAK_IDENTIFIER] ? [[prefsManager valueForKey:@"notifyWithTone" identifier:TWEAK_IDENTIFIER] boolValue] : NO;
-    self.notifyStyle = [prefsManager valueForKey:@"notifyStyle"  identifier:TWEAK_IDENTIFIER] ? [[prefsManager valueForKey:@"notifyStyle" identifier:TWEAK_IDENTIFIER] intValue] : 1;
+    self.notifyStyle = [prefsManager valueForKey:@"notifyStyle"  identifier:TWEAK_IDENTIFIER] ? [[prefsManager valueForKey:@"notifyStyle" identifier:TWEAK_IDENTIFIER] intValue] : NotificationStyleCompact;
     //}
     HBLogDebug(@"notifySilently: %d", self.notifySilently?1:0);
 }
