@@ -4,7 +4,7 @@
 #import "BSPDiagnosticController.h"
 #import "../NSTask.h"
 
-#define CONTRIBUTORS @"peterfectionn, xiehq, Crevette, u/vladaad, himajin, xiangfeidexiaohuo"
+#define CONTRIBUTORS @"peterfectionn, xiehq, Crevette, u/vladaad, himajin, xiangfeidexiaohuo, mus, olivertzeng"
 
 static NSBundle *tweakBundle;
 

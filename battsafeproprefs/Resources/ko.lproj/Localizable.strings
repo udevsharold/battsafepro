@@ -1,0 +1,67 @@
+//translated by mus
+
+//=====================Notification=====================
+"NOTI_MESSAGE" = "충전 일시 정지됨 %d%%";
+"NOTI_CHARGE_NOW" = "충전 시작";
+
+
+//=====================Preferences=====================
+"TWEAK" = "Tweak";
+"TWEAK_FOOTER" = "모든 설정에 리스프링이 필요하지 않습니다.";
+"ENABLED" = "활성화";
+"SHOW_NOTIFICATION" = "알림";
+"SHOW_NOTIFICATION_FOOTER" = "최대 충전량에 다다르면 알립니다.";
+"NOTIFICATION_STYLE" = "알림 스타일";
+"NOTIFICATION_STYLE_DEFAULT" = "기본";
+"NOTIFICATION_STYLE_COMPACT" = "작게";
+"NOTIFICATION_STYLE_FOOTER" = "알림 스타일을 설정하세요.";
+"NOTIFY_SILENTLY" = "조용히 알리기";
+"NOTIFY_SILENTLY_FOOTER" = "화면을 깨우지 않고 알립니다.";
+"NOTIFY_WITH_TONE" = "알림 소리";
+"NOTIFY_WITH_TONE_FOOTER" = "알림 소리와 함께 알립니다.";
+"MAX_CHARGE_LEVEL" = "최대 충전 레벨";
+"MAX_CHARGE_LEVEL_FOOTER" = "최대 충전 레벨을 설정합니다 (%). 기본 설정은 80% 입니다.";
+
+"DEVELOPMENT" = "DEVELOPMENT";
+"SUPPORT" = "개발자 후원하기";
+"CONTACT" = "문의하기";
+"TWITTER" = "Twitter";
+"REDDIT" = "Reddit";
+"FOOTER_CREATED" = "Created by udevs";
+"FOOTER_CREDITS" = "Special thanks\n%@";
+
+"RESPRING" = "Respring";
+"RESPRING_MESSAGE" = "리스프링을 할 필요는 없습니다. 그래도 진행할까요?";
+"ANSWER_YES" = "네";
+"ANSWER_NO" = "아니요";
+
+"ONBOARDING_SCREEN_SHOW" = "소개 화면 열기";
+"ONBOARDING_ALERT_SHOW" = "소개 화면 알림";
+
+"OVERSHOOTING_HEADER" = "과충전";
+"OVERSHOOTING_MESSAGE" = "때때로 배터리가 최대 충전 비율보다 약 1-2% 더 초과되어 충전되는 현상이 있으며, 이는 지극히 정상입니다. iOS는 기기가 아주 깊은 수면 상태일 때 다음 주기까지 백분율을 업데이트하지 않기로 결정하기도 합니다. 게다가, 이 비율은 iOS 자체의 추정일 뿐 절대 정확한 수치가 아닙니다. 그러나, BattSafePro는 이를 지능적으로 완화하기 위해 최선을 다하고 있습니다.";
+"ANSWER_GOT_IT" = "알겠어요";
+
+"WELCOME_DESCRIPTION" = "당신의 배터리 수명을 연장하세요.";
+
+"OPTIMIZED_CHARGING_HEADER" = "최적화된 충전";
+"OPTIMIZED_CHARGING_MESSAGE" = "최상의 경험을 위해 최적화된 배터리 충전 비활성화를 강력 권장합니다.";
+
+"ACTIVATOR_SUPPORT_HEADER" = "Activator 지원";
+"ACTIVATOR_SUPPORT_MESSAGE" = "BattSafePro는 Activator를 지원합니다. 더 많은 개인 설정을 확인해 보세요.";
+
+//Diagnostic Screen
+"DIAGNOSTIC_SCREEN_SHOW" = "진단 정보 표시하기";
+"DIAGNOSTIC_ALERT_SHOW" = "진단 정보 알림";
+"DIAGNOSTIC_TITLE" = "진단 정보";
+"DIAGNOSTIC_DESCRIPTION" = "현재 시스템 상태 확인\n\n문제가 발생하면 userspace reboot/ldrestart 대신 재부팅 혹은 재탈옥을 시도하세요.";
+
+"DIAGNOSTIC_BATTSAFEPRO_IN_EFFECT" = "BattSafePro 작동";
+"DIAGNOSTIC_CHARGING" = "현재 배터리 충전 중";
+"DIAGNOSTIC_CHARGING_DESCRIPTION" = "시스템 상태 업데이트는 몇 초 정도 소요됩니다. 계속 새로 고치세요.";
+"DIAGNOSTIC_CHARGING_PROHIBITED" = "배터리 충전 차단";
+"DIAGNOSTIC_EXTERNAL" = "외부 장치 연결됨";
+"DIAGNOSTIC_EXTERNAL_CAPABLE" = "충전이 가능한 외부 장치";
+
+"DIAGNOSTIC_BUTTON_REFRESH" = "새로 고침";
+"DIAGNOSTIC_BUTTON_CLOSE" = "닫기";

@@ -1,0 +1,67 @@
+//translated by olivertzeng
+
+//=====================Notification=====================
+"NOTI_MESSAGE" = "充電停止，已達到 %d%%";
+"NOTI_CHARGE_NOW" = "繼續充電";
+
+
+//=====================Preferences=====================
+"TWEAK" = "插件";
+"TWEAK_FOOTER" = "所有設定不需重新啟動主畫面。";
+"ENABLED" = "啟用";
+"SHOW_NOTIFICATION" = "顯示通知";
+"SHOW_NOTIFICATION_FOOTER" = "充電到設定的電量後通知。";
+"NOTIFICATION_STYLE" = "通知風格";
+"NOTIFICATION_STYLE_DEFAULT" = "預設";
+"NOTIFICATION_STYLE_COMPACT" = "密集";
+"NOTIFICATION_STYLE_FOOTER" = "設定通知風格。";
+"NOTIFY_SILENTLY" = "沈默通知";
+"NOTIFY_SILENTLY_FOOTER" = "在不喚醒螢幕的情況下通知。";
+"NOTIFY_WITH_TONE" = "通知鈴聲";
+"NOTIFY_WITH_TONE_FOOTER" = "通知時發出的聲音。";
+"MAX_CHARGE_LEVEL" = "最高電量";
+"MAX_CHARGE_LEVEL_FOOTER" = "設定最高充電電量(%)，預設為80% 。";
+
+"DEVELOPMENT" = "插件開發";
+"SUPPORT" = "支持";
+"CONTACT" = "聯絡";
+"TWITTER" = "推特";
+"REDDIT" = "Reddit";
+"FOOTER_CREATED" = "由 udevs 開發";
+"FOOTER_CREDITS" = "特别感謝\n%@";
+
+"RESPRING" = "重新啟動主畫面";
+"RESPRING_MESSAGE" = "無需重新啟動主畫面，要继续注销吗？";
+"ANSWER_YES" = "是歐甘我屁事";
+"ANSWER_NO" = "隨便";
+
+"ONBOARDING_SCREEN_SHOW" = "顯示充電詳情";
+"ONBOARDING_ALERT_SHOW" = "顯示充電過度警告";
+
+"OVERSHOOTING_HEADER" = "過度充電";
+"OVERSHOOTING_MESSAGE" = "有時您會注意到，充電百分比超過首選最大充電水平大約1-2％，這完全正常。iOS偶爾會在下一個充電周期前不更新百分比，尤其是在深度睡眠。此外，顯示的百分比僅是iOS本身的估算值，並不是絕對準確的數字，但是BattSafePro已經盡了最大的努力來緩解這種狀況。";
+"ANSWER_GOT_IT" = "知道了";
+
+"WELCOME_DESCRIPTION" = "延長電池壽命";
+
+"OPTIMIZED_CHARGING_HEADER" = "最佳化電池充電";
+"OPTIMIZED_CHARGING_MESSAGE" = "强烈建議停用蘋果的最佳化電池充電功能以獲得最佳體驗。";
+
+"ACTIVATOR_SUPPORT_HEADER" = "支援Activator";
+"ACTIVATOR_SUPPORT_MESSAGE" = "BattSafePro支援Activator，可以獲得更多的個人化手勢。";
+
+//Diagnostic Screen
+"DIAGNOSTIC_SCREEN_SHOW" = "顯示診斷詳情";
+"DIAGNOSTIC_ALERT_SHOW" = "顯示診斷警報";
+"DIAGNOSTIC_TITLE" = "診斷訊息";
+"DIAGNOSTIC_DESCRIPTION" = "當前系統狀況概述\n如果遇到任何問題，請重新越獄，而不是使用者空間重新啟動/軟重新啟動設備。";
+
+"DIAGNOSTIC_BATTSAFEPRO_IN_EFFECT" = "BattSafePro正在執行";
+"DIAGNOSTIC_CHARGING" = "正在充電";
+"DIAGNOSTIC_CHARGING_DESCRIPTION" = "系統更新狀態需要幾秒鐘，重新載入中。";
+"DIAGNOSTIC_CHARGING_PROHIBITED" = "充電完成";
+"DIAGNOSTIC_EXTERNAL" = "外接電源已連接";
+"DIAGNOSTIC_EXTERNAL_CAPABLE" = "外接電源正在充電";
+
+"DIAGNOSTIC_BUTTON_REFRESH" = "重新載入";
+"DIAGNOSTIC_BUTTON_CLOSE" = "關閉";

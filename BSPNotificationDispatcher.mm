@@ -54,6 +54,18 @@ static NSBundle *tweakBundle;
       [self recallRequest];
 }
 
+//Prevent unrecognized selector crash for BBObserver
+- (void)forwardInvocation:(NSInvocation *)anInvocation{
+    HBLogDebug(@"forwardInvocation: %@", anInvocation);
+    BBObserver *observer = [[[objc_getClass("NCBulletinNotificationSource") alloc] initWithDispatcher:((SpringBoard *)[objc_getClass("UIApplication") sharedApplication]).notificationDispatcher.dispatcher] valueForKey:@"_observer"];
+    [anInvocation invokeWithTarget:observer];
+}
+
+- (NSMethodSignature *)methodSignatureForSelector:(SEL)selector{
+    HBLogDebug(@"methodSignatureForSelector: %@", NSStringFromSelector(selector));
+    return [objc_getClass("BBObserver") instanceMethodSignatureForSelector:selector];
+}
+
 //BBObserver method
 -(void)sendResponse:(BBResponse *)response withCompletion:(/*^block*/id)arg2{
     [self notifyBypass];
