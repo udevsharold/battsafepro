@@ -1,12 +1,12 @@
-//translated by olivertzeng
+//translated by olivertzeng & ИƎØ_ΙΙØZ
 
 //=====================Notification=====================
 "NOTI_MESSAGE" = "充電停止，已達到 %d%%";
-"NOTI_CHARGE_NOW" = "繼續充電";
+"NOTI_CHARGE_NOW" = "正在充電";
 
 
 //=====================Preferences=====================
-"TWEAK" = "插件";
+"TWEAK" = "外掛";
 "TWEAK_FOOTER" = "所有設定不需重新啟動主畫面。";
 "ENABLED" = "啟用";
 "SHOW_NOTIFICATION" = "顯示通知";
@@ -15,31 +15,31 @@
 "NOTIFICATION_STYLE_DEFAULT" = "預設";
 "NOTIFICATION_STYLE_COMPACT" = "密集";
 "NOTIFICATION_STYLE_FOOTER" = "設定通知風格。";
-"NOTIFY_SILENTLY" = "沈默通知";
+"NOTIFY_SILENTLY" = "無聲通知";
 "NOTIFY_SILENTLY_FOOTER" = "在不喚醒螢幕的情況下通知。";
 "NOTIFY_WITH_TONE" = "通知鈴聲";
 "NOTIFY_WITH_TONE_FOOTER" = "通知時發出的聲音。";
 "MAX_CHARGE_LEVEL" = "最高電量";
 "MAX_CHARGE_LEVEL_FOOTER" = "設定最高充電電量(%)，預設為80% 。";
 
-"DEVELOPMENT" = "插件開發";
-"SUPPORT" = "支持";
+"DEVELOPMENT" = "開發";
+"SUPPORT" = "支持開發者";
 "CONTACT" = "聯絡";
-"TWITTER" = "推特";
+"TWITTER" = "X (Twitter)";
 "REDDIT" = "Reddit";
 "FOOTER_CREATED" = "由 udevs 開發";
 "FOOTER_CREDITS" = "特别感謝\n%@";
 
 "RESPRING" = "重新啟動主畫面";
-"RESPRING_MESSAGE" = "無需重新啟動主畫面，要继续注销吗？";
-"ANSWER_YES" = "是歐甘我屁事";
-"ANSWER_NO" = "隨便";
+"RESPRING_MESSAGE" = "無需重新啟動主畫面，要繼續嗎？";
+"ANSWER_YES" = "是";
+"ANSWER_NO" = "否";
 
 "ONBOARDING_SCREEN_SHOW" = "顯示充電詳情";
 "ONBOARDING_ALERT_SHOW" = "顯示充電過度警告";
 
 "OVERSHOOTING_HEADER" = "過度充電";
-"OVERSHOOTING_MESSAGE" = "有時您會注意到，充電百分比超過首選最大充電水平大約1-2％，這完全正常。iOS偶爾會在下一個充電周期前不更新百分比，尤其是在深度睡眠。此外，顯示的百分比僅是iOS本身的估算值，並不是絕對準確的數字，但是BattSafePro已經盡了最大的努力來緩解這種狀況。";
+"OVERSHOOTING_MESSAGE" = "您會發現到，有時充電百分比超過首選最大充電量約1-2％，這完全正常。iOS偶爾會在下一個充電周期前不更新百分比，尤其是在深度睡眠。此外，顯示的百分比僅是iOS本身的預算值，並不是絕對準確的數字，但是BattSafePro已經盡了最大的努力來緩解這種狀況。";
 "ANSWER_GOT_IT" = "知道了";
 
 "WELCOME_DESCRIPTION" = "延長電池壽命";
